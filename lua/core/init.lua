@@ -1,7 +1,7 @@
 local g, fn = vim.g, vim.fn
 local helper = require('core.helper')
 -- remove check is windows because I only use mac or linux
-local cache_dir = helper.path_join(vim.fn.stdpath('cache'), 'nvim')
+local cache_dir = vim.fn.stdpath('cache') .. '/'
 
 -- Create cache dir and subs dir
 local createdir = function()
