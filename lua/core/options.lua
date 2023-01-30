@@ -1,6 +1,7 @@
 local opt = vim.opt
 local cache_dir = vim.env.HOME .. '/.cache/nvim/'
 
+opt.mouse = '' -- 关闭鼠标支持
 opt.termguicolors = true
 opt.hidden = true
 opt.magic = true
