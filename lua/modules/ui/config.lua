@@ -52,7 +52,16 @@ function config.nvim_tree()
     disable_netrw = false,
     hijack_cursor = true,
     hijack_netrw = true,
+    -- 隐藏 .文件 和 node_modules 文件夹
+    filters = {
+      dotfiles = true,
+      custom = { 'node_modules' },
+    },
   })
+  -- 自动关闭
+  vim.cmd([[
+    autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
+  ]])
 end
 
 return config
