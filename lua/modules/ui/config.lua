@@ -1,7 +1,8 @@
 local config = {}
 
-function config.zephyr()
-  vim.cmd('colorscheme zephyr')
+function config.gruvbox()
+  vim.o.background = "dark"
+  vim.cmd('colorscheme gruvbox')
 end
 
 function config.dashboard()
