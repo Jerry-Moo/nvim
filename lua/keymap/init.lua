@@ -1,12 +1,12 @@
 local api = vim.api
--- require('keymap.remap')
+require('keymap.remap')
 local keymap = require('core.keymap')
 local nmap, imap, xmap = keymap.nmap, keymap.imap, keymap.xmap
 local silent, noremap = keymap.silent, keymap.noremap
 local expr, remap = keymap.expr, keymap.remap
 local opts = keymap.new_opts
 local cmd = keymap.cmd
--- require('keymap.config')
+require('keymap.config')
 
 -- Use space as leader key
 vim.g.mapleader = ' '
