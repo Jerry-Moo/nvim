@@ -21,8 +21,8 @@ map.n({
   ['<C-j>'] = '<C-w>j',
   ['<C-k>'] = '<C-w>k',
   -- resize window
-  ['<C-[>'] = cmd('vertical resize -5'),
-  ['<C-]>'] = cmd('vertical resize +5'),
+  ['<A-[>'] = cmd('vertical resize -5'),
+  ['<A-]>'] = cmd('vertical resize +5'),
 })
 
 -- insertmode remap
