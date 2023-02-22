@@ -39,6 +39,7 @@ function config.nvim_treesitter()
     'rst',
     'rnoweb',
     'm68k',
+    'smali',
   }
 
   require('nvim-treesitter.configs').setup({

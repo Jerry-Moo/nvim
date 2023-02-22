@@ -10,3 +10,9 @@ package({
   config = conf.nvim_tree,
   dependencies = { 'nvim-tree/nvim-web-devicons' },
 })
+
+package({
+  'lukas-reineke/indent-blankline.nvim',
+  event = 'BufRead',
+  config = conf.indent_blankline,
+})

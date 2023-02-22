@@ -36,4 +36,21 @@ function config.nvim_tree()
   ]])
 end
 
+function config.indent_blankline()
+  require('indent_blankline').setup({
+    char = '│',
+    use_treesitter_scope = true,
+    show_first_indent_level = true,
+    show_current_context = false,
+    show_current_context_start = false,
+    show_current_context_start_on_current_line = false,
+    filetype_exclude = {
+      'dashboard',
+      'log',
+      'TelescopePrompt',
+    },
+    buftype_exclude = { 'terminal', 'nofile', 'prompt' },
+  })
+end
+
 return config
