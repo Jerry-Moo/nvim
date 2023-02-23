@@ -27,4 +27,7 @@ map.n({
   ['<Leader>ll'] = cmd('LspLog'),
   ['<Leader>lr'] = cmd('LspRestart'),
   -- Lspsaga
+  ['K'] = cmd('Lspsaga hover_doc'),
+  ['gd'] = cmd('Lspsaga peek_definition'),
+  ['gD'] = cmd('lua vim.lsp.buf.definition()'),
 })
