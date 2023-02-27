@@ -21,8 +21,15 @@ map.n({
   ['<C-j>'] = '<C-w>j',
   ['<C-k>'] = '<C-w>k',
   -- resize window
-  ['<A-[>'] = cmd('vertical resize -5'),
-  ['<A-]>'] = cmd('vertical resize +5'),
+  ['<A-h>'] = cmd('vertical resize -5'),
+  ['<A-l>'] = cmd('vertical resize +5'),
+  ['<A-j>'] = cmd('resize +5'),
+  ['<A-k>'] = cmd('resize -5'),
+  -- Mac
+  ['˙'] = cmd('vertical resize -5'),
+  ['¬'] = cmd('vertical resize +5'),
+  ['∆'] = cmd('resize +5'),
+  ['˚'] = cmd('resize -5'),
 })
 
 -- insertmode remap
