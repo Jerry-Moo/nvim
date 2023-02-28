@@ -1,9 +1,5 @@
 local config = {}
 
-function config.zephyr()
-  vim.cmd.colorscheme('zephyr')
-end
-
 function config.nvim_tree()
   require('nvim-tree').setup({
     -- 完全禁止内置netrw
@@ -22,7 +18,7 @@ function config.nvim_tree()
       -- 左/右
       side = 'left',
       -- 隐藏根目录
-      hide_root_folder = false,
+      hide_root_folder = true,
       -- 不显示行数
       -- number = false,
       relativenumber = true,
@@ -47,9 +43,33 @@ function config.indent_blankline()
     filetype_exclude = {
       'dashboard',
       'log',
+      'fugitive',
+      'gitcommit',
+      'packer',
+      'markdown',
+      'json',
+      'txt',
+      'vista',
+      'help',
+      'todoist',
+      'git',
       'TelescopePrompt',
+      'undotree',
     },
     buftype_exclude = { 'terminal', 'nofile', 'prompt' },
+    context_patterns = {
+      'class',
+      'function',
+      'method',
+      'block',
+      'list_literal',
+      'selector',
+      '^if',
+      '^table',
+      'if_statement',
+      'while',
+      'for',
+    },
   })
 end
 

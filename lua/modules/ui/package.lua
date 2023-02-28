@@ -1,8 +1,12 @@
 local package = require('core.pack').package
 local conf = require('modules.ui.config')
 
-package({ 'glepnir/zephyr-nvim', config = conf.zephyr })
-
+package({
+  'ellisonleao/gruvbox.nvim',
+  config = function()
+    vim.cmd.colorscheme('gruvbox')
+  end,
+})
 
 package({
   'nvim-tree/nvim-tree.lua',
