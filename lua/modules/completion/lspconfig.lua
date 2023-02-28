@@ -107,7 +107,6 @@ local servers = {
   'dockerls',
   'pyright',
   'bashls',
-  'zls',
   'jsonls',
   'tsserver',
 }
