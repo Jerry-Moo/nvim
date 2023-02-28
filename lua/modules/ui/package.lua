@@ -20,3 +20,9 @@ package({
   event = 'BufRead',
   config = conf.indent_blankline,
 })
+
+package({
+  'lewis6991/gitsigns.nvim',
+  event = { 'BufRead', 'BufNewFile' },
+  config = conf.gitsigns,
+})
