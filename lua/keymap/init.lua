@@ -21,7 +21,7 @@ map.n({
   ['<Leader>fb'] = cmd('Telescope buffers'),
   ['<Leader>fa'] = cmd('Telescope live_grep'),
   ['<Leader>fw'] = cmd('Telescope grep_string'),
-  ['<Leader>ff'] = cmd('Telescope find_files'),
+  ['<Leader>ff'] = cmd('Telescope find_files find_command=rg,--ignore,--hidden,--files'),
   -- Lsp
   ['<Leader>li'] = cmd('LspInfo'),
   ['<Leader>ll'] = cmd('LspLog'),
@@ -31,3 +31,9 @@ map.n({
   ['gd'] = cmd('Lspsaga peek_definition'),
   ['gD'] = cmd('lua vim.lsp.buf.definition()'),
 })
+
+map.n('<Leader>E', function()
+  vim.cmd('Telescope file_browser')
+  local esc_key = api.nvim_replace_termcodes('<Esc>', true, false, true)
+  api.nvim_feedkeys(esc_key, 'n', false)
+end)
