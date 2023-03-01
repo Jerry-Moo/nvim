@@ -19,3 +19,9 @@ package({
     { 'nvim-telescope/telescope-file-browser.nvim' },
   },
 })
+
+package({ -- 高亮搜索内容
+  'kevinhwang91/nvim-hlslens',
+  event = 'BufRead',
+  config = conf.hlslens,
+})
