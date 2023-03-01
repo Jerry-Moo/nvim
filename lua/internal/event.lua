@@ -40,8 +40,16 @@ api.nvim_create_autocmd({ 'CursorHold' }, {
 api.nvim_create_autocmd({ 'InsertEnter' }, {
   pattern = '*',
   callback = function()
+    vim.opt.relativenumber = false
     require('internal.cursorword').disable_cursorword()
   end,
+})
+
+api.nvim_create_autocmd('InsertLeave', {
+  pattern = '*',
+  callback = function()
+    vim.opt.relativenumber = true
+  end
 })
 
 --disable diagnostic in neovim test file *_spec.lua
