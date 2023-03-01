@@ -9,6 +9,13 @@ package({
 })
 
 package({
+  'glepnir/dashboard-nvim',
+  event = 'VimEnter',
+  config = conf.dashboard,
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
+})
+
+package({
   'nvim-tree/nvim-tree.lua',
   cmd = 'NvimTreeToggle',
   config = conf.nvim_tree,
