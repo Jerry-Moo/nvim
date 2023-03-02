@@ -38,6 +38,20 @@ function config.telescope()
   require('telescope').load_extension('app')
 end
 
+function config.whichkey()
+  local wk = require('which-key')
+  wk.setup({
+    wk.register({
+      ['<Leader>'] = {
+        f = {
+          name = '+find',
+          f = { 'Find File' },
+        },
+      },
+    })
+  })
+end
+
 function config.hlslens()
   require('hlslens').setup({
     override_lens = function(render, posList, nearest, idx, relIdx)

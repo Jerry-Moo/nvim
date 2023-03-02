@@ -20,6 +20,11 @@ package({
   },
 })
 
+package({
+  'folke/which-key.nvim',
+  config = conf.whichkey,
+})
+
 package({ -- 高亮搜索内容
   'kevinhwang91/nvim-hlslens',
   event = 'BufRead',
