@@ -33,6 +33,21 @@ function config.dashboard()
   })
 end
 
+function config.nvim_bufferline()
+  require('bufferline').setup({
+    options = {
+      modified_icon = '✥',
+      buffer_close_icon = '',
+      always_show_bufferline = false,
+      diagnostics = "nvim_lsp",
+      diagnostics_indicator = function(count, level, diagnostics_dict, context)
+        local icon = level:match("error") and " " or " "
+        return " " .. icon .. count
+      end,
+    },
+  })
+end
+
 function config.nvim_tree()
   require('nvim-tree').setup({
     -- 完全禁止内置netrw

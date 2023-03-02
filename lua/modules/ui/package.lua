@@ -16,6 +16,12 @@ package({
 })
 
 package({
+  'akinsho/nvim-bufferline.lua',
+  config = conf.nvim_bufferline,
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
+})
+
+package({
   'nvim-tree/nvim-tree.lua',
   cmd = 'NvimTreeToggle',
   config = conf.nvim_tree,
