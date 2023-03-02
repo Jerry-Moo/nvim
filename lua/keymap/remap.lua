@@ -15,7 +15,7 @@ map.n({
   ['<Leader>t'] = cmd('TrimTrailingWhitespace'),
   -- yank
   ['Y'] = 'y$',
-  -- window jump
+  -- switch window
   ['<C-h>'] = '<C-w>h',
   ['<C-l>'] = '<C-w>l',
   ['<C-j>'] = '<C-w>j',
@@ -25,6 +25,17 @@ map.n({
   ['<A-l>'] = cmd('vertical resize +5'),
   ['<A-j>'] = cmd('resize +5'),
   ['<A-k>'] = cmd('resize -5'),
+  -- window
+  ['<Leader>1'] = '1gt',
+  ['<Leader>2'] = '2gt',
+  ['<Leader>3'] = '3gt',
+  ['<Leader>4'] = '4gt',
+  ['<Leader>5'] = '5gt',
+  ['<Leader>6'] = '6gt',
+  ['<Leader>7'] = '7gt',
+  ['<Leader>8'] = '8gt',
+  ['<Leader>9'] = '9gt',
+  ['<Leader>0'] = cmd('tablast'),
   -- Mac
   ['˙'] = cmd('vertical resize -5'),
   ['¬'] = cmd('vertical resize +5'),

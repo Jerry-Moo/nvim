@@ -3,13 +3,6 @@ require('keymap.remap')
 local map = require('core.keymap')
 local cmd = map.cmd
 
--- Use space as leader key
-vim.g.mapleader = ' '
-
--- leaderkey
-map.n({ [' '] = '' })
-map.x({ [' '] = '' })
-
 -- usage example
 map.n({
   -- plugin manager: Lazy.nvim
