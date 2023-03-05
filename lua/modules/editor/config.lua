@@ -62,4 +62,14 @@ function config.nvim_treesitter()
   })
 end
 
+function config.peek()
+  local peek = require('peek')
+  peek.setup({
+    app = 'browser',
+    theme = 'light',
+    vim.api.nvim_create_user_command('PeekOpen', peek.open, {}),
+    vim.api.nvim_create_user_command('PeekClose', peek.close, {}),
+  })
+end
+
 return config

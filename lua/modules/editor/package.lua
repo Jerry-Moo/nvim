@@ -10,3 +10,10 @@ package({
     'nvim-treesitter/nvim-treesitter-textobjects',
   },
 })
+
+package({ -- markdown preview
+  'toppair/peek.nvim',
+  ft = { 'markdown' },
+  build = 'deno task --quiet build:fast',
+  config = conf.peek,
+})
