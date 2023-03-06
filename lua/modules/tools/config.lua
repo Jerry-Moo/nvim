@@ -84,4 +84,22 @@ function config.hlslens()
   })
 end
 
+function config.leap()
+  local leap = require('leap')
+  leap.add_default_mappings()
+  leap.opts.highlight_unlabeled_phase_one_targets = true
+end
+
+function config.flit()
+  require('flit').setup({
+    keys = { f = 'f', F = 'F', t = 't', T = 'T' },
+    -- A string like "nv", "nvo", "o", etc.
+    labeled_modes = "v",
+    multiline = true,
+    -- Like `leap`s similar argument (call-specific overrides).
+    -- E.g.: opts = { equivalence_classes = {} }
+    opts = {},
+  })
+end
+
 return config

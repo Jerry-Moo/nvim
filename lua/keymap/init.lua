@@ -22,7 +22,7 @@ map.n({
   -- Lspsaga
   ['K'] = cmd('Lspsaga hover_doc'),
   ['gd'] = cmd('Lspsaga peek_definition'),
-  ['gD'] = cmd('lua vim.lsp.buf.definition()'),
+  ['gD'] = cmd('lua vim.lsp.buf.definition()'), -- 比 cmd('Lspsaga goto_definition') 好用
 })
 
 map.n('<Leader>E', function()

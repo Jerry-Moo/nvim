@@ -30,3 +30,7 @@ package({ -- 高亮搜索内容
   event = 'BufRead',
   config = conf.hlslens,
 })
+
+package({ 'ggandor/leap.nvim', event = 'BufRead', config = conf.leap })
+
+package({ 'ggandor/flit.nvim', event = 'BufRead',  config = conf.flit })
