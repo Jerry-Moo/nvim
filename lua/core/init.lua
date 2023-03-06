@@ -53,5 +53,4 @@ api.nvim_set_keymap('x', ' ', '', { noremap = true })
 
 require('core.pack'):boot_strap()
 require('core.options')
-require('keymap')
 require('internal.event')
