@@ -13,7 +13,6 @@ opt.synmaxcol = 2500
 opt.helplang = 'cn'
 opt.langmenu = 'en_US' -- zh_CN 编码 encoding
 opt.encoding = 'utf-8' -- 设置Vim 内部使用的字符编码方式，包括 Vim 的 buffer (缓冲区)、菜单文本、消息文本等
-opt.formatoptions:append('1') -- Don't break lines after a one-letter word 不要在一个字母单词后面断行
 opt.formatoptions:remove('t') -- Don't auto-wrap text 文本不要自动换行
 opt.formatoptions:remove('o') -- Disable comment-continuation (normal 'o'/'O')
 opt.formatoptions:append('j') --  Remove comment leader when joining lines
