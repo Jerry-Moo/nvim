@@ -30,3 +30,11 @@ map.n('<Leader>E', function()
   local esc_key = api.nvim_replace_termcodes('<Esc>', true, false, true)
   api.nvim_feedkeys(esc_key, 'n', false)
 end)
+
+map.n('-', function()
+  local ok, pick_window = pcall(require, 'window-picker')
+  if ok then
+    local picked_window_id = pick_window.pick_window() or vim.api.nvim_get_current_win()
+    vim.api.nvim_set_current_win(picked_window_id)
+  end
+end)

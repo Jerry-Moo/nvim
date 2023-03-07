@@ -34,3 +34,13 @@ package({ -- 高亮搜索内容
 package({ 'ggandor/leap.nvim', event = 'BufRead', config = conf.leap })
 
 package({ 'ggandor/flit.nvim', event = 'BufRead',  config = conf.flit })
+
+package({
+  's1n7ax/nvim-window-picker',
+  config = function ()
+    require('window-picker').setup({
+      selection_chars = 'SDFJKLZXCV',
+      include_current_win = true,
+    })
+  end
+})
