@@ -29,8 +29,7 @@ package({
 
 package({
   'glepnir/lspsaga.nvim',
-  ft = enable_lsp_filetype,
-  event = 'BufRead',
+  event = 'LspAttach',
   config = conf.lspsaga,
 })
 
