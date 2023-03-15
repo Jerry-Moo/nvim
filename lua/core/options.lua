@@ -13,9 +13,6 @@ opt.synmaxcol = 2500
 opt.helplang = 'cn'
 opt.langmenu = 'en_US' -- zh_CN 编码 encoding
 opt.encoding = 'utf-8' -- 设置Vim 内部使用的字符编码方式，包括 Vim 的 buffer (缓冲区)、菜单文本、消息文本等
-opt.formatoptions:remove('t') -- Don't auto-wrap text 文本不要自动换行
-opt.formatoptions:remove('o') -- Disable comment-continuation (normal 'o'/'O')
-opt.formatoptions:append('j') --  Remove comment leader when joining lines
 
 opt.clipboard = 'unnamedplus'
 if vim.loop.os_uname().sysname == 'Darwin' then
@@ -89,9 +86,9 @@ end
 
 -- Behavior {{
 opt.autoread = true
-opt.linebreak = true -- 单词不换行
+opt.linebreak = false -- 单词不换行
 opt.whichwrap = 'h,l,<,>,[,],~' -- Move to following line on certain keys 允许backspace和光标键跨越行边界(不建议)
-opt.splitbelow = true 
+opt.splitbelow = true
 opt.splitright = true -- Splits open bottom right
 opt.switchbuf = 'useopen,vsplit'
 opt.completeopt = 'menu,menuone,noselect' -- Always show menu, even for one item
@@ -133,5 +130,5 @@ opt.foldlevelstart = 99 -- 关闭vim默认折叠
 opt.signcolumn = 'yes' -- Always show signs column 总是显示左边git error 状态栏
 opt.pumblend = 10
 opt.winblend = 10
-opt.showbreak = '↳ '
+opt.showbreak = '↳ ' -- 用于显示换行符前的可选字符，以表示文本行实际上已经被分为多个逻辑行。
 -- }}
