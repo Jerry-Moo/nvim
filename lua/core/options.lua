@@ -13,6 +13,7 @@ opt.synmaxcol = 2500
 opt.helplang = 'cn'
 opt.langmenu = 'en_US' -- zh_CN 编码 encoding
 opt.encoding = 'utf-8' -- 设置Vim 内部使用的字符编码方式，包括 Vim 的 buffer (缓冲区)、菜单文本、消息文本等
+opt.formatoptions:remove('t') -- Don't auto-wrap text 文本不要自动换行
 
 opt.clipboard = 'unnamedplus'
 if vim.loop.os_uname().sysname == 'Darwin' then
