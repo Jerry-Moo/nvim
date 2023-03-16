@@ -87,7 +87,7 @@ end
 
 -- Behavior {{
 opt.autoread = true
-opt.linebreak = false -- 单词不换行
+opt.linebreak = true -- 单词是否换行
 opt.whichwrap = 'h,l,<,>,[,],~' -- Move to following line on certain keys 允许backspace和光标键跨越行边界(不建议)
 opt.splitbelow = true
 opt.splitright = true -- Splits open bottom right
