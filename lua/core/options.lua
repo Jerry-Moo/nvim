@@ -2,7 +2,7 @@ local opt = vim.opt
 local cache_dir = vim.env.HOME .. '/.cache/nvim/'
 
 -- General settings {{
-opt.mouse = '' -- 关闭鼠标支持
+opt.mouse = '' -- close mouse
 opt.report = 0 -- Don't report on line changes
 opt.errorbells = true -- Trigger bell on error
 opt.hidden = true -- hide buffers when abandoned instead of unload 使得不可见的缓冲区保持载入
@@ -13,7 +13,6 @@ opt.synmaxcol = 2500
 opt.helplang = 'cn'
 opt.langmenu = 'en_US' -- zh_CN 编码 encoding
 opt.encoding = 'utf-8' -- 设置Vim 内部使用的字符编码方式，包括 Vim 的 buffer (缓冲区)、菜单文本、消息文本等
-opt.formatoptions:remove('t') -- Don't auto-wrap text 文本不要自动换行
 
 opt.clipboard = 'unnamedplus'
 if vim.loop.os_uname().sysname == 'Darwin' then
@@ -97,6 +96,19 @@ opt.scrolloff = 2 -- Keep at least 2 lines above/below
 opt.sidescrolloff = 5 -- Keep at least 2 lines left/right
 opt.jumpoptions = 'stack'
 opt.spelloptions = 'camel'
+-- Text behaviour
+---- o.formatoptions = o.formatoptions
+--                    + 't'    -- auto-wrap text using textwidth
+--                    + 'c'    -- auto-wrap comments using textwidth
+--                    + 'r'    -- auto insert comment leader on pressing enter
+--                    - 'o'    -- don't insert comment leader on pressing o
+--                    + 'q'    -- format comments with gq
+--                    - 'a'    -- don't autoformat the paragraphs (use some formatter instead)
+--                    + 'n'    -- autoformat numbered list
+--                    - '2'    -- I am a programmer and not a writer
+--                    + 'j'    -- Join comments smartly
+-- opt.formatoptions:remove('t') -- Don't auto-wrap text 文本不要自动换行
+opt.formatoptions = 'qj'
 -- }}
 
 -- Editor UI {{
