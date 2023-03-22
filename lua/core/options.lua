@@ -13,6 +13,9 @@ opt.synmaxcol = 2500
 opt.helplang = 'cn'
 opt.langmenu = 'en_US' -- zh_CN 编码 encoding
 opt.encoding = 'utf-8' -- 设置Vim 内部使用的字符编码方式，包括 Vim 的 buffer (缓冲区)、菜单文本、消息文本等
+-- What to save for views and sessions:
+opt.viewoptions = 'folds,cursor,curdir,slash,unix' -- remember where to recover cursor
+opt.sessionoptions = 'curdir,help,tabpages,winsize'
 
 opt.clipboard = 'unnamedplus'
 if vim.loop.os_uname().sysname == 'Darwin' then
@@ -86,14 +89,14 @@ end
 
 -- Behavior {{
 opt.autoread = true
-opt.linebreak = true -- 单词是否换行
+opt.linebreak = true -- 单词换行
 opt.whichwrap = 'h,l,<,>,[,],~' -- Move to following line on certain keys 允许backspace和光标键跨越行边界(不建议)
 opt.splitbelow = true
 opt.splitright = true -- Splits open bottom right
-opt.switchbuf = 'useopen,vsplit'
+opt.switchbuf = 'useopen,vsplit' -- Jump to the first open window 通常分割/缓冲相关的命令会分割当前窗口，但是也可以让Vim在已经有窗口打开所指定的缓冲时，切换到那个窗口而不是新建一个
 opt.completeopt = 'menu,menuone,noselect' -- Always show menu, even for one item
 opt.scrolloff = 2 -- Keep at least 2 lines above/below
-opt.sidescrolloff = 5 -- Keep at least 2 lines left/right
+opt.sidescrolloff = 2 -- Keep at least 2 lines left/right
 opt.jumpoptions = 'stack'
 opt.spelloptions = 'camel'
 -- Text behaviour
@@ -112,6 +115,7 @@ opt.formatoptions = 'qj'
 -- }}
 
 -- Editor UI {{
+opt.confirm = true
 opt.termguicolors = true
 opt.number = true -- Show number
 opt.relativenumber = true -- Show relative number
@@ -121,14 +125,14 @@ opt.shortmess = 'aoOTIcF' -- 显示开屏系统版本信息
 opt.list = true -- 自定义tab显示样式
 opt.listchars = 'tab:»·,nbsp:+,trail:·,extends:→,precedes:←'
 opt.showtabline = 0
-opt.winwidth = 30
+opt.winwidth = 30 -- Minimum width for active window
 -- 弹出菜单的行数
 opt.pumheight = 15 -- Pop-up menu's line height
 -- 命令模式显示当前键入的指令
 opt.showcmd = false -- Show command in status line
 opt.cmdheight = 2 -- Height of the command line 0=全展示
 opt.equalalways = true -- resize windows on split or close 在拆分或关闭时调整窗口大小
-opt.laststatus = 3 -- 总是显示底部状态行
+opt.laststatus = 2 -- 总是显示底部状态行
 -- opt.statusline = '-' -- hide file name in statusline 隐藏侧边栏 一般 git 代码检查
 opt.colorcolumn = '120' -- Column highlight at textwidth's max character-limit
 -- 折叠方法
@@ -138,7 +142,7 @@ opt.colorcolumn = '120' -- Column highlight at textwidth's max character-limit
 -- syntax    使用语法定义折叠
 -- diff      对没有更改的文本进行折叠
 -- marker    使用标记进行折叠, 默认标记是 {{{ 和 }}}
-opt.foldmethod = 'marker'
+opt.foldmethod = 'syntax'
 opt.foldlevelstart = 99 -- 关闭vim默认折叠
 opt.signcolumn = 'yes' -- Always show signs column 总是显示左边git error 状态栏
 opt.pumblend = 10
