@@ -12,6 +12,8 @@ opt.virtualedit = 'block' -- Position cursor anywhere in visual block
 opt.synmaxcol = 2500
 opt.helplang = 'cn'
 opt.langmenu = 'en_US' -- zh_CN 编码 encoding
+opt.fenc = 'utf-8'
+opt.fencs = 'utf-8,usc-bom,euc-jp,gb18030,gbk,gb2312,cp936'
 opt.encoding = 'utf-8' -- 设置Vim 内部使用的字符编码方式，包括 Vim 的 buffer (缓冲区)、菜单文本、消息文本等
 -- What to save for views and sessions:
 opt.viewoptions = 'folds,cursor,curdir,slash,unix' -- remember where to recover cursor
@@ -94,11 +96,10 @@ opt.whichwrap = 'h,l,<,>,[,],~' -- Move to following line on certain keys 允许
 opt.splitbelow = true
 opt.splitright = true -- Splits open bottom right
 opt.switchbuf = 'useopen,vsplit' -- Jump to the first open window 通常分割/缓冲相关的命令会分割当前窗口，但是也可以让Vim在已经有窗口打开所指定的缓冲时，切换到那个窗口而不是新建一个
-opt.completeopt = 'menu,menuone,noselect' -- Always show menu, even for one item
+  opt.completeopt = 'menu,menuone,noselect,noinsert' -- Always show menu, even for one item
 opt.scrolloff = 2 -- Keep at least 2 lines above/below
 opt.sidescrolloff = 2 -- Keep at least 2 lines left/right
-opt.jumpoptions = 'stack'
-opt.spelloptions = 'camel'
+  opt.spelloptions = 'camel'
 -- Text behaviour
 ---- o.formatoptions = o.formatoptions
 --                    + 't'    -- auto-wrap text using textwidth
@@ -115,25 +116,26 @@ opt.formatoptions = 'qj'
 -- }}
 
 -- Editor UI {{
+opt.cursorline = true -- 高亮显示当前光标所在的行
 opt.confirm = true
 opt.termguicolors = true
 opt.number = true -- Show number
 opt.relativenumber = true -- Show relative number
 opt.showmode = false -- Don't show mode on bottom
 opt.ruler = false -- Disable default status ruler
-opt.shortmess = 'aoOTIcF' -- 显示开屏系统版本信息
+  opt.shortmess = 'aoOTIcF' -- 显示开屏系统版本信息
 opt.list = true -- 自定义tab显示样式
 opt.listchars = 'tab:»·,nbsp:+,trail:·,extends:→,precedes:←'
-opt.showtabline = 0
-opt.winwidth = 30 -- Minimum width for active window
+  opt.showtabline = 0
+  opt.winwidth = 30 -- Minimum width for active window
 -- 弹出菜单的行数
-opt.pumheight = 15 -- Pop-up menu's line height
+  opt.pumheight = 15 -- Pop-up menu's line height
 -- 命令模式显示当前键入的指令
 opt.showcmd = false -- Show command in status line
-opt.cmdheight = 2 -- Height of the command line 0=全展示
+  opt.cmdheight = 2 -- Height of the command line 0=全展示
 opt.equalalways = true -- resize windows on split or close 在拆分或关闭时调整窗口大小
-opt.laststatus = 2 -- 总是显示底部状态行
--- opt.statusline = '-' -- hide file name in statusline 隐藏侧边栏 一般 git 代码检查
+  opt.laststatus = 2 -- 总是显示底部状态行
+  -- opt.statusline = '-' -- hide file name in statusline 隐藏侧边栏 一般 git 代码检查
 opt.colorcolumn = '120' -- Column highlight at textwidth's max character-limit
 -- 折叠方法
 -- manual    手工折叠
@@ -147,5 +149,5 @@ opt.foldlevelstart = 99 -- 关闭vim默认折叠
 opt.signcolumn = 'yes' -- Always show signs column 总是显示左边git error 状态栏
 opt.pumblend = 10
 opt.winblend = 10
-opt.showbreak = '↳ ' -- 用于显示换行符前的可选字符，以表示文本行实际上已经被分为多个逻辑行。
+  opt.showbreak = '↳ ' -- 用于显示换行符前的可选字符，以表示文本行实际上已经被分为多个逻辑行。
 -- }}
