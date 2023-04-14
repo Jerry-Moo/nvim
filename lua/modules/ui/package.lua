@@ -1,40 +1,39 @@
-local package = require('core.pack').package
 local conf = require('modules.ui.config')
 
-package({
+packadd({
   'ellisonleao/gruvbox.nvim',
   config = function()
     vim.cmd.colorscheme('gruvbox')
   end,
 })
 
-package({
+packadd({
   'glepnir/dashboard-nvim',
   event = 'VimEnter',
   config = conf.dashboard,
   dependencies = { 'nvim-tree/nvim-web-devicons' },
 })
 
-package({
+packadd({
   'akinsho/nvim-bufferline.lua',
   config = conf.nvim_bufferline,
   dependencies = { 'nvim-tree/nvim-web-devicons' },
 })
 
-package({
+packadd({
   'nvim-tree/nvim-tree.lua',
   cmd = 'NvimTreeToggle',
   config = conf.nvim_tree,
   dependencies = { 'nvim-tree/nvim-web-devicons' },
 })
 
-package({
+packadd({
   'lukas-reineke/indent-blankline.nvim',
   event = 'BufRead',
   config = conf.indent_blankline,
 })
 
-package({
+packadd({
   'lewis6991/gitsigns.nvim',
   event = { 'BufRead', 'BufNewFile' },
   config = conf.gitsigns,

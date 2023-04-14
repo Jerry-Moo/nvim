@@ -1,7 +1,6 @@
-local package = require('core.pack').package
 local conf = require('modules.editor.config')
 
-package({
+packadd({
   'nvim-treesitter/nvim-treesitter',
   event = 'BufRead',
   run = ':TSUpdate',
@@ -11,7 +10,7 @@ package({
   },
 })
 
-package({ -- markdown preview
+packadd({ -- markdown preview
   'toppair/peek.nvim',
   ft = { 'markdown' },
   build = 'deno task --quiet build:fast',

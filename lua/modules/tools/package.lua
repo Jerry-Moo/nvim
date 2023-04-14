@@ -1,7 +1,6 @@
-local package = require('core.pack').package
 local conf = require('modules.tools.config')
 
-package({ -- css 着色器
+packadd({ -- css 着色器
   'norcalli/nvim-colorizer.lua',
   ft = { 'lua', 'css', 'html', 'sass', 'less', 'typescriptreact' },
   config = function()
@@ -9,7 +8,7 @@ package({ -- css 着色器
   end,
 })
 
-package({
+packadd({
   'nvim-telescope/telescope.nvim',
   cmd = 'Telescope',
   config = conf.telescope,
@@ -20,22 +19,22 @@ package({
   },
 })
 
-package({
+packadd({
   'folke/which-key.nvim',
   config = conf.whichkey,
 })
 
-package({ -- 高亮搜索内容
+packadd({ -- 高亮搜索内容
   'kevinhwang91/nvim-hlslens',
   event = 'BufRead',
   config = conf.hlslens,
 })
 
-package({ 'ggandor/leap.nvim', event = 'BufRead', config = conf.leap })
+packadd({ 'ggandor/leap.nvim', event = 'BufRead', config = conf.leap })
 
-package({ 'ggandor/flit.nvim', event = 'BufRead',  config = conf.flit })
+packadd({ 'ggandor/flit.nvim', event = 'BufRead',  config = conf.flit })
 
-package({
+packadd({
   's1n7ax/nvim-window-picker',
   config = function ()
     require('window-picker').setup({

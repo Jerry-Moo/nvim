@@ -16,6 +16,9 @@ function pack:load_modules_packages()
 
   if fn.exists('g:disable_modules') == 1 then
     disable_modules = vim.split(vim.g.disable_modules, ',', { trimempty = true })
+    disable_modules = vim.tbl_map(function(k)
+      return 'modules/' .. k .. '/package'
+    end, disable_modules)
   end
 
   for _, f in pairs(list) do
@@ -52,7 +55,7 @@ function pack:boot_strap()
   end
 end
 
-function pack.package(repo)
+_G.packadd = function(repo)
   if not pack.repos then
     pack.repos = {}
   end

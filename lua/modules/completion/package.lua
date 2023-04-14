@@ -1,4 +1,3 @@
-local package = require('core.pack').package
 local conf = require('modules.completion.config')
 
 local enable_lsp_filetype = {
@@ -13,7 +12,7 @@ local enable_lsp_filetype = {
   'python',
 }
 
-package({
+packadd({
   'neovim/nvim-lspconfig',
   -- used filetype to lazyload lsp
   -- config your language filetype in here
@@ -21,19 +20,19 @@ package({
   config = conf.nvim_lsp,
 })
 
-package({
+packadd({
   'williamboman/mason.nvim',
   event = 'VimEnter',
   config = conf.mason,
 })
 
-package({
+packadd({
   'glepnir/lspsaga.nvim',
   event = 'LspAttach',
   config = conf.lspsaga,
 })
 
-package({
+packadd({
   'hrsh7th/nvim-cmp',
   event = 'InsertEnter',
   config = conf.nvim_cmp,
@@ -46,17 +45,17 @@ package({
   },
 })
 
-package({
+packadd({
   'L3MON4D3/LuaSnip',
   event = 'InsertCharPre',
   config = conf.lua_snip,
   dependencies = { 'saadparwaiz1/cmp_luasnip' },
 })
 
-package({ 'windwp/nvim-autopairs', event = 'InsertEnter', config = conf.auto_pairs })
+packadd({ 'windwp/nvim-autopairs', event = 'InsertEnter', config = conf.auto_pairs })
 
 -- lua 编辑调试插件
-package({
+packadd({
   'ii14/emmylua-nvim',
   ft = 'lua',
 })
