@@ -132,7 +132,7 @@ opt.listchars = 'tab:»·,nbsp:+,trail:·,extends:→,precedes:←'
   opt.pumheight = 15 -- Pop-up menu's line height
 -- 命令模式显示当前键入的指令
 opt.showcmd = false -- Show command in status line
-  opt.cmdheight = 2 -- Height of the command line 0=全展示
+opt.cmdheight = 2 -- Height of the command line 0=全展 1=默认 2=留空2行
 opt.equalalways = true -- resize windows on split or close 在拆分或关闭时调整窗口大小
   opt.laststatus = 2 -- 总是显示底部状态行
   -- opt.statusline = '-' -- hide file name in statusline 隐藏侧边栏 一般 git 代码检查
