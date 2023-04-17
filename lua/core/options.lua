@@ -12,8 +12,6 @@ opt.virtualedit = 'block' -- Position cursor anywhere in visual block
 opt.synmaxcol = 2500
 opt.helplang = 'cn'
 opt.langmenu = 'en_US' -- zh_CN 编码 encoding
-opt.fenc = 'utf-8'
-opt.fencs = 'utf-8,usc-bom,euc-jp,gb18030,gbk,gb2312,cp936'
 opt.encoding = 'utf-8' -- 设置Vim 内部使用的字符编码方式，包括 Vim 的 buffer (缓冲区)、菜单文本、消息文本等
 -- What to save for views and sessions:
 opt.viewoptions = 'folds,cursor,curdir,slash,unix' -- remember where to recover cursor
