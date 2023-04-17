@@ -1,13 +1,6 @@
 local conf = require('modules.ui.config')
 
 packadd({
-  'ellisonleao/gruvbox.nvim',
-  config = function()
-    vim.cmd.colorscheme('gruvbox')
-  end,
-})
-
-packadd({
   'glepnir/dashboard-nvim',
   event = 'VimEnter',
   config = conf.dashboard,
@@ -15,9 +8,15 @@ packadd({
 })
 
 packadd({
-  'akinsho/nvim-bufferline.lua',
-  config = conf.nvim_bufferline,
+  'nvimdev/whiskyline.nvim',
+  config = conf.whisky,
   dependencies = { 'nvim-tree/nvim-web-devicons' },
+})
+
+packadd({
+  'lewis6991/gitsigns.nvim',
+  event = { 'BufRead', 'BufNewFile' },
+  config = conf.gitsigns,
 })
 
 packadd({
@@ -31,10 +30,4 @@ packadd({
   'lukas-reineke/indent-blankline.nvim',
   event = 'BufRead',
   config = conf.indent_blankline,
-})
-
-packadd({
-  'lewis6991/gitsigns.nvim',
-  event = { 'BufRead', 'BufNewFile' },
-  config = conf.gitsigns,
 })

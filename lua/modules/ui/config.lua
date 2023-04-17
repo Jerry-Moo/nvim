@@ -1,5 +1,9 @@
 local config = {}
 
+function config.whisky()
+  require('whiskyline').setup()
+end
+
 function config.dashboard()
   local db = require('dashboard')
   db.setup({
@@ -13,37 +17,28 @@ function config.dashboard()
       },
       disable_move = true,
       shortcut = {
-        { desc = 'Update', icon = ' ', group = '@variable', action = 'Lazy update', key = 'u' },
+        {
+          desc = 'Update',
+          icon = ' ',
+          group = 'Include',
+          action = 'Lazy update',
+          key = 'u'
+        },
         {
           icon = ' ',
           desc = 'Files',
-          group = '@variable',
-          action = 'Telescope find_files',
+          group = 'Function',
+          action = 'Telescope find_files find_command=rg,--ignore,--hidden,--files',
           key = 'f',
         },
         {
           icon = ' ',
           desc = 'Apps',
-          group = '@variable',
+          group = 'String',
           action = 'Telescope app',
           key = 'a',
         },
       },
-    },
-  })
-end
-
-function config.nvim_bufferline()
-  require('bufferline').setup({
-    options = {
-      modified_icon = '✥',
-      buffer_close_icon = '',
-      always_show_bufferline = false,
-      diagnostics = "nvim_lsp",
-      diagnostics_indicator = function(count, level, diagnostics_dict, context)
-        local icon = level:match("error") and " " or " "
-        return " " .. icon .. count
-      end,
     },
   })
 end
@@ -83,18 +78,12 @@ end
 function config.gitsigns()
   require('gitsigns').setup({
     signs = {
-      -- add          = { text = '│' },
-      -- change       = { text = '│' },
-      -- delete       = { text = '_' },
-      -- topdelete    = { text = '‾' },
-      -- changedelete = { text = '~' },
-      -- untracked    = { text = '┆' },
-      add = { text = '▍' },
-      change = { text = '▍' },
-      delete = { text = '▍' },
-      topdelete = { text = '▔' },
-      changedelete = { text = '▍' },
-      untracked = { text = '▍' },
+      add = { hl = 'GitGutterAdd', text = '▍' },
+      change = { hl = 'GitGutterChange', text = '▍' },
+      delete = { hl = 'GitGutterDelete', text = '▍' },
+      topdelete = { hl = 'GitGutterDeleteChange', text = '▔' },
+      changedelete = { hl = 'GitGutterChange', text = '▍' },
+      untracked = { hl = 'GitGutterAdd', text = '▍' },
     },
     keymaps = {
       -- Default keymap options
