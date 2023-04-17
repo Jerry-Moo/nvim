@@ -1,5 +1,4 @@
 local g, api, fn = vim.g, vim.api, vim.fn
-local helper = require('core.helper')
 -- remove check is windows because I only use mac or linux
 local cache_dir = vim.fn.stdpath('cache') .. '/'
 
@@ -54,3 +53,4 @@ api.nvim_set_keymap('x', ' ', '', { noremap = true })
 require('core.pack'):boot_strap()
 require('core.options')
 require('internal.event')
+vim.cmd.colorscheme('solarized')
