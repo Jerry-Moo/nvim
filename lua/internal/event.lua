@@ -1,6 +1,6 @@
 local api = vim.api
 local nvim_create_autocmd = api.nvim_create_autocmd
-local my_group = vim.api.nvim_create_augroup('GlepnirGroup', {})
+local my_group = vim.api.nvim_create_augroup('JerryMooGroup', {})
 
 nvim_create_autocmd('VimEnter', {
   group = my_group,
@@ -14,7 +14,7 @@ nvim_create_autocmd('VimEnter', {
 
 nvim_create_autocmd({ 'BufWritePre' }, {
   group = my_group,
-  pattern = { '/tmp/*', 'commit_editmsg', 'merge_msg', '*.tmp', '*.bak' },
+  pattern = { '/tmp/*', 'COMMIT_EDITMSG', 'MERGE_MSG', '*.tmp', '*.bak' },
   command = 'setlocal noundofile',
 })
 
@@ -42,6 +42,7 @@ nvim_create_autocmd('Filetype', {
 })
 
 nvim_create_autocmd({ 'CursorHold' }, {
+  group = my_group,
   pattern = '*',
   callback = function(opt)
     require('internal.cursorword').cursor_moved(opt.buf)
@@ -49,6 +50,7 @@ nvim_create_autocmd({ 'CursorHold' }, {
 })
 
 nvim_create_autocmd({ 'InsertEnter' }, {
+  group = my_group,
   pattern = '*',
   callback = function()
     vim.opt.relativenumber = false
@@ -57,6 +59,7 @@ nvim_create_autocmd({ 'InsertEnter' }, {
 })
 
 nvim_create_autocmd('InsertLeave', {
+  group = my_group,
   pattern = '*',
   callback = function()
     vim.opt.relativenumber = true
@@ -65,6 +68,7 @@ nvim_create_autocmd('InsertLeave', {
 
 --disable diagnostic in neovim test file *_spec.lua
 nvim_create_autocmd('FileType', {
+  group = my_group,
   pattern = 'lua',
   callback = function(opt)
     local fname = api.nvim_buf_get_name(opt.buf)
