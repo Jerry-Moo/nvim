@@ -1,8 +1,11 @@
 local config = {}
 
--- config server in this function
-function config.nvim_lsp()
-  require('modules.completion.lspconfig')
+function config.lspsaga()
+  require('lspsaga').setup({
+    symbol_in_winbar = {
+      ignore_patterns = { '%w_spec' },
+    },
+  })
 end
 
 function config.mason()
@@ -17,14 +20,6 @@ function config.mason()
         package_pending = "➜",
         package_uninstalled = "✗",
       },
-    },
-  })
-end
-
-function config.lspsaga()
-  require('lspsaga').setup({
-    symbol_in_winbar = {
-      ignore_patterns = { '%w_spec' },
     },
   })
 end
@@ -95,30 +90,6 @@ function config.nvim_cmp()
       documentation = cmp.config.window.bordered(),
     },
   })
-end
-
-function config.lua_snip()
-  local ls = require('luasnip')
-  ls.config.set_config({
-    delete_check_events = 'TextChanged,InsertEnter',
-  })
-  require('luasnip.loaders.from_vscode').lazy_load({
-    paths = { './snippets/' },
-  })
-end
-
-function config.auto_pairs()
-  require('nvim-autopairs').setup({})
-  local status, cmp = pcall(require, 'cmp')
-  if not status then
-    vim.cmd([[packadd nvim-cmp]])
-    cmp = require('cmp')
-  end
-  local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-  cmp.event:on(
-    'confirm_done',
-    cmp_autopairs.on_confirm_done()
-  )
 end
 
 return config

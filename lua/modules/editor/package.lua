@@ -1,6 +1,19 @@
 local conf = require('modules.editor.config')
 
 packadd({
+  'L3MON4D3/LuaSnip',
+  event = 'InsertCharPre',
+  config = conf.lua_snip,
+  dependencies = { 'saadparwaiz1/cmp_luasnip' },
+})
+
+packadd({
+  'windwp/nvim-autopairs',
+  event = 'InsertEnter',
+  config = conf.auto_pairs,
+})
+
+packadd({
   'nvim-treesitter/nvim-treesitter',
   event = 'BufRead',
   run = ':TSUpdate',
@@ -15,4 +28,9 @@ packadd({ -- markdown preview
   ft = { 'markdown' },
   build = 'deno task --quiet build:fast',
   config = conf.peek,
+})
+
+packadd({
+  'ii14/emmylua-nvim',
+  ft = 'lua',
 })
