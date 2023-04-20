@@ -9,17 +9,6 @@ packadd({ -- css 着色器
 })
 
 packadd({
-  'nvim-telescope/telescope.nvim',
-  cmd = 'Telescope',
-  config = conf.telescope,
-  dependencies = {
-    { 'nvim-lua/plenary.nvim' },
-    { 'nvim-telescope/telescope-fzy-native.nvim' },
-    { 'nvim-telescope/telescope-file-browser.nvim' },
-  },
-})
-
-packadd({
   'folke/which-key.nvim',
   config = conf.whichkey,
 })
