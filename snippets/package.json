@@ -16,6 +16,10 @@
       {
         "language": "typescriptreact",
         "path": "./typescriptreact.json"
+      },
+      {
+        "language": "javascriptreact",
+        "path": "./javascriptreact.json"
       }
     ]
   }
