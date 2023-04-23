@@ -1,26 +1,26 @@
 local g, api, fn = vim.g, vim.api, vim.fn
 -- remove check is windows because I only use mac or linux
-local cache_dir = vim.fn.stdpath('cache') .. '/'
+local cache_dir = vim.fn.stdpath("cache") .. "/"
 
 -- Create cache dir and subs dir
 local createdir = function()
-  local data_dir = {
-    cache_dir .. 'backup',
-    cache_dir .. 'session',
-    cache_dir .. 'swap',
-    cache_dir .. 'tags',
-    cache_dir .. 'undo',
-  }
-  -- There only check once that If cache_dir exists
-  -- Then I don't want to check subs dir exists
-  if fn.isdirectory(cache_dir) == 0 then
-    os.execute('mkdir -p ' .. cache_dir)
-    for _, v in pairs(data_dir) do
-      if fn.isdirectory(v) == 0 then
-        os.execute('mkdir -p ' .. v)
-      end
-    end
-  end
+	local data_dir = {
+		cache_dir .. "backup",
+		cache_dir .. "session",
+		cache_dir .. "swap",
+		cache_dir .. "tags",
+		cache_dir .. "undo",
+	}
+	-- There only check once that If cache_dir exists
+	-- Then I don't want to check subs dir exists
+	if fn.isdirectory(cache_dir) == 0 then
+		os.execute("mkdir -p " .. cache_dir)
+		for _, v in pairs(data_dir) do
+			if fn.isdirectory(v) == 0 then
+				os.execute("mkdir -p " .. v)
+			end
+		end
+	end
 end
 
 createdir()
@@ -45,12 +45,12 @@ g.loaded_netrwPlugin = 1
 g.loaded_netrwSettings = 1
 g.loaded_netrwFileHandlers = 1
 
-g.mapleader = ' '
+g.mapleader = " "
 
-api.nvim_set_keymap('n', ' ', '', { noremap = true })
-api.nvim_set_keymap('x', ' ', '', { noremap = true })
+api.nvim_set_keymap("n", " ", "", { noremap = true })
+api.nvim_set_keymap("x", " ", "", { noremap = true })
 
-require('core.pack'):boot_strap()
-require('core.options')
-require('internal.event')
-vim.cmd.colorscheme('solarized')
+require("core.pack"):boot_strap()
+require("core.options")
+require("internal.event")
+vim.cmd.colorscheme("solarized")
