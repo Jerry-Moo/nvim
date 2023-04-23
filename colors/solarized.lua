@@ -1,1 +1,1 @@
-require('internal.solarized').colorscheme()
+require("internal.solarized").colorscheme()
