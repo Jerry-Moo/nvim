@@ -1,5 +1,9 @@
 local config = {}
 
+function config.gruvbox()
+	vim.cmd("colorscheme gruvbox")
+end
+
 function config.whisky()
 	require("whiskyline").setup()
 end

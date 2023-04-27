@@ -1,6 +1,11 @@
 local conf = require("modules.ui.config")
 
 packadd({
+	"ellisonleao/gruvbox.nvim",
+	config = conf.gruvbox,
+})
+
+packadd({
 	"glepnir/dashboard-nvim",
 	event = "VimEnter",
 	config = conf.dashboard,
