@@ -24,6 +24,27 @@ function config.mason()
 	})
 end
 
+function config.copilot()
+	require("copilot").setup({
+		suggestion = { enable = false },
+		panel = { enable = false },
+	})
+end
+
+function config.copilot_cmp()
+	require("copilot_cmp").setup({})
+end
+
+function config.lspkind()
+	local lspkind = require("lspkind")
+	lspkind.init({
+		symbol_map = {
+			Copilot = "",
+		},
+	})
+	vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
+end
+
 function config.nvim_cmp()
 	local cmp = require("cmp")
 
@@ -34,15 +55,19 @@ function config.nvim_cmp()
 			format = require("lspkind").cmp_format({
 				mode = "symbol_text",
 				menu = {
+					copilot = "[COPI]",
 					nvim_lsp = "[LSP]",
-					luasnip = "[Snippet]",
-					path = "[Path]",
-					buffer = "[Buffer]",
+					luasnip = "[SNIP]",
+					path = "[PATH]",
+					buffer = "[BUF]",
 				},
 			}),
 		},
 		-- You can set mappings if you want
 		mapping = cmp.mapping.preset.insert({
+			["<C-u"] = cmp.mapping.scroll_docs(-4),
+			["<C-d"] = cmp.mapping.scroll_docs(4),
+			["<C-Space>"] = cmp.mapping.complete(),
 			["Up"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
 			["Down"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
 			["<C-e>"] = cmp.mapping.abort(),
@@ -66,7 +91,7 @@ function config.nvim_cmp()
 				local _, luasnip = pcall(require, "luasnip")
 
 				if cmp.visible() then
-					cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+					cmp.select_prev_item()
 				elseif luasnip.jumpable(-1) then
 					luasnip.jump(-1)
 				else
@@ -80,15 +105,30 @@ function config.nvim_cmp()
 			end,
 		},
 		sources = {
-			{ name = "nvim_lsp" },
-			{ name = "luasnip" },
-			{ name = "path" },
-			{ name = "buffer" },
+			-- Copilot Source
+			{ name = "copilot" },
+			-- Other Sources
+			{ name = "nvim_lsp" }, -- nvim-lspconfig
+			{ name = "luasnip" }, -- luasnip
+			{ name = "path" }, -- cmp-path
+			{ name = "buffer", keyword_length = 3 }, -- cmp-buffer
 		},
 		window = {
 			completion = cmp.config.window.bordered(),
 			documentation = cmp.config.window.bordered(),
 		},
+	})
+	-- / 查找模式使用 buffer 源
+	cmp.setup.cmdline({ "/", "?" }, {
+		mapping = cmp.mapping.preset.cmdline(),
+		sources = {
+			{ name = "buffer" },
+		},
+	})
+	-- : 命令行模式中使用 path 和 cmdline 源.
+	cmp.setup.cmdline(":", {
+		mapping = cmp.mapping.preset.cmdline(),
+		sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" } }),
 	})
 end
 
@@ -113,7 +153,7 @@ function config.formatter()
 		},
 	})
 	vim.cmd([[
-    autocmd BufWritePost * FormatWrite
+     autocmd BufWritePost * FormatWrite
   ]])
 end
 return config

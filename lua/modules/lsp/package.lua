@@ -44,7 +44,7 @@ local function diag_config()
 		update_in_insert = true,
 		severity_sort = true,
 		virtual_text = {
-			prefix = "🔥",
+			prefix = "",
 			source = true,
 		},
 	})
@@ -72,8 +72,16 @@ packadd({
 
 packadd({
 	"williamboman/mason.nvim",
-	event = "VimEnter",
+	event = "VimEnter", -- event?
 	config = conf.mason,
+})
+
+packadd({
+	"zbirenbaum/copilot.lua",
+	cmd = "Copilot",
+	event = "InsertEnter", -- event?
+	build = ":Copilot auth",
+	config = conf.copilot,
 })
 
 packadd({
@@ -81,11 +89,19 @@ packadd({
 	event = "InsertEnter",
 	config = conf.nvim_cmp,
 	dependencies = {
+		-- copilot
+		{
+			"zbirenbaum/copilot-cmp",
+			dependencies = { "copilot.lua" },
+			config = conf.copilot_cmp,
+		},
+		-- 补全源
 		{ "hrsh7th/cmp-nvim-lsp" },
 		{ "hrsh7th/cmp-path" },
 		{ "hrsh7th/cmp-buffer" },
+		{ "hrsh7th/cmp-cmdline" },
 		-- icon
-		{ "onsails/lspkind.nvim" },
+		{ "onsails/lspkind.nvim", config = conf.lspkind },
 	},
 })
 
