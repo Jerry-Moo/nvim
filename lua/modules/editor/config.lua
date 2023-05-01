@@ -1,26 +1,5 @@
 local config = {}
 
-function config.lua_snip()
-	local ls = require("luasnip")
-	ls.config.set_config({
-		delete_check_events = "TextChanged,InsertEnter",
-	})
-	require("luasnip.loaders.from_vscode").lazy_load({
-		paths = { "./snippets/" },
-	})
-end
-
-function config.auto_pairs()
-	require("nvim-autopairs").setup({})
-	local status, cmp = pcall(require, "cmp")
-	if not status then
-		vim.cmd([[packadd nvim-cmp]])
-		cmp = require("cmp")
-	end
-	local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-end
-
 function config.telescope()
 	local fb_actions = require("telescope").extensions.file_browser.actions
 	require("telescope").setup({

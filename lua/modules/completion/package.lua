@@ -100,13 +100,32 @@ packadd({
 		{ "hrsh7th/cmp-path" },
 		{ "hrsh7th/cmp-buffer" },
 		{ "hrsh7th/cmp-cmdline" },
+		-- snip
+		{ "saadparwaiz1/cmp_luasnip" },
 		-- icon
 		{ "onsails/lspkind.nvim", config = conf.lspkind },
 	},
 })
 
 packadd({
+	"L3MON4D3/LuaSnip",
+	event = "InsertCharPre",
+	config = conf.lua_snip,
+})
+
+packadd({
+	"windwp/nvim-autopairs",
+	event = "InsertEnter",
+	config = conf.auto_pairs,
+})
+
+packadd({
 	"mhartington/formatter.nvim",
 	ft = { "c", "cpp", "rust", "lua", "go", "typescript", "javascript", "javascriptreact", "python" },
 	config = conf.formatter,
+})
+
+packadd({
+	"ii14/emmylua-nvim",
+	ft = "lua",
 })
