@@ -1,4 +1,4 @@
-local conf = require("modules.lsp.config")
+local conf = require("modules.completion.config")
 
 local function lsp_fts(type)
 	type = type or nil
@@ -58,8 +58,8 @@ packadd({
 			diag_config()
 			loaded = true
 		end
-		require("modules.lsp.backend")
-		require("modules.lsp.frontend")
+		require("modules.completion.backend")
+		require("modules.completion.frontend")
 	end,
 })
 
