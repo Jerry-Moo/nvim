@@ -4,8 +4,50 @@ function config.gruvbox()
 	vim.cmd("colorscheme gruvbox")
 end
 
-function config.whisky()
-	require("whiskyline").setup()
+function config.lualine()
+	require("lualine").setup({
+		options = {
+			-- 主题
+			theme = "gruvbox",
+			-- 分割线
+			component_separators = {
+				left = "",
+				right = "",
+			},
+			section_separators = {
+				left = "",
+				right = "",
+			},
+			globalstatus = true,
+		},
+		extensions = { "nvim-tree" },
+	})
+end
+
+function config.nvim_bufferline()
+	require("bufferline").setup({
+		options = {
+			numbers = "ordinal",
+			modified_icon = "✥",
+			buffer_close_icon = "",
+			always_show_bufferline = false,
+			-- LSP 诊断集成，设置为 "nvim_lsp" 以启用
+			diagnostics = "nvim_lsp",
+			diagnostics_indicator = function(count, level, diagnostics_dict, context)
+				return "(" .. count .. ")"
+			end,
+			-- 侧边栏配置
+			-- 左侧让出 nvim-tree 的位置, 显示文字 File Explorer
+			offsets = {
+				{
+					filetype = "NvimTree",
+					text = "File Explorer",
+					highlight = "Directory",
+					text_align = "left",
+				},
+			},
+		},
+	})
 end
 
 function config.dashboard()

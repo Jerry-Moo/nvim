@@ -12,9 +12,17 @@ packadd({
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 })
 
+-- 状态栏
 packadd({
-	"nvimdev/whiskyline.nvim",
-	config = conf.whisky,
+	"nvim-lualine/lualine.nvim",
+	config = conf.lualine,
+	dependencies = { "nvim-tree/nvim-web-devicons" },
+})
+
+-- buffer
+packadd({
+	"akinsho/nvim-bufferline.lua",
+	config = conf.nvim_bufferline,
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 })
 

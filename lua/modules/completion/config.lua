@@ -164,6 +164,15 @@ function config.formatter()
 			lua = {
 				require("formatter.filetypes.lua").stylua,
 			},
+			go = {
+				-- goimports
+				function()
+					return {
+						exe = "goimports",
+						stdin = true,
+					}
+				end,
+			},
 			-- Use the special "*" filetype for defining formatter configurations on
 			-- any filetype
 			["*"] = {
