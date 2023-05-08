@@ -5,6 +5,7 @@ packadd({ -- css 着色器
 	ft = { "lua", "css", "html", "sass", "less", "typescriptreact" },
 	config = function()
 		require("colorizer").setup()
+		exec_filetype("ColorizerSetup")
 	end,
 })
 
