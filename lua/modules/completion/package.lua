@@ -26,10 +26,9 @@ local function lsp_fts(type)
 	return fts[type]
 end
 
-local loaded = false
 local function diag_config()
 	local signs = {
-		Error = " ",
+		Error = " ",
 		Warn = " ",
 		Info = " ",
 		Hint = " ",
@@ -48,18 +47,28 @@ local function diag_config()
 			source = true,
 		},
 	})
+
+	--disable diagnostic in neovim test file *_spec.lua
+	vim.nvim_create_autocmd("FileType", {
+		group = vim.api.nvim_create_augroup("DisableInSpec", { clear = true }),
+		pattern = "lua",
+		callback = function(opt)
+			local fname = vim.api.nvim_buf_get_name(opt.buf)
+			if fname:find("%w_spec%.lua") then
+				vim.diagnostic.disable(opt.buf)
+			end
+		end,
+	})
 end
 
 packadd({
 	"neovim/nvim-lspconfig",
 	ft = lsp_fts(),
 	config = function()
-		if not loaded then
-			diag_config()
-			loaded = true
-		end
+		diag_config()
 		require("modules.completion.backend")
 		require("modules.completion.frontend")
+		exec_filetype("lspconfig", "DisableInSpec")
 	end,
 })
 
@@ -79,7 +88,6 @@ packadd({
 packadd({
 	"zbirenbaum/copilot.lua",
 	cmd = "Copilot",
-	event = "InsertEnter", -- event?
 	build = ":Copilot auth",
 	config = conf.copilot,
 })
@@ -102,21 +110,12 @@ packadd({
 		{ "hrsh7th/cmp-cmdline" },
 		-- snip
 		{ "saadparwaiz1/cmp_luasnip" },
+		{ "L3MON4D3/LuaSnip", config = conf.lua_snip },
 		-- icon
 		{ "onsails/lspkind.nvim", config = conf.lspkind },
+		-- nvim-autopairs
+		{ "windwp/nvim-autopairs", config = conf.auto_pairs },
 	},
-})
-
-packadd({
-	"L3MON4D3/LuaSnip",
-	event = "InsertCharPre",
-	config = conf.lua_snip,
-})
-
-packadd({
-	"windwp/nvim-autopairs",
-	event = "InsertEnter",
-	config = conf.auto_pairs,
 })
 
 packadd({

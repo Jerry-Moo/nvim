@@ -65,15 +65,3 @@ nvim_create_autocmd("InsertLeave", {
 		vim.opt.relativenumber = true
 	end,
 })
-
---disable diagnostic in neovim test file *_spec.lua
-nvim_create_autocmd("FileType", {
-	group = my_group,
-	pattern = "lua",
-	callback = function(opt)
-		local fname = api.nvim_buf_get_name(opt.buf)
-		if fname:find("%w_spec%.lua") then
-			vim.diagnostic.disable(opt.buf)
-		end
-	end,
-})

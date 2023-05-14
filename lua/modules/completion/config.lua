@@ -32,7 +32,37 @@ function config.copilot()
 end
 
 function config.copilot_cmp()
-	require("copilot_cmp").setup({})
+	local copilot_cmp = require("copilot_cmp")
+	copilot_cmp.setup({})
+	-- attach cmp source whenever copilot attaches
+	-- fixes lazy-loading issues with the copilot cmp source
+
+	copilot_cmp._on_insert_enter()
+end
+
+function config.lua_snip()
+	local ls = require("luasnip")
+	ls.config.set_config({
+		delete_check_events = "TextChanged,InsertEnter",
+	})
+	require("luasnip.loaders.from_vscode").lazy_load({
+		paths = { "./snippets/" },
+	})
+end
+
+function config.auto_pairs()
+	local autopairs = require("nvim-autopairs")
+	autopairs.setup({
+		check_ts = true, -- treesitter integration
+		disable_filetype = { "TelescopePrompt" },
+	})
+	local ok, cmp = pcall(require, "cmp")
+	if not ok then
+		vim.cmd([[packadd nvim-cmp]])
+		cmp = require("cmp")
+	end
+	local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 end
 
 function config.lspkind()
@@ -49,7 +79,6 @@ function config.nvim_cmp()
 	local cmp = require("cmp")
 
 	cmp.setup({
-		preselect = cmp.PreselectMode.Item,
 		formatting = {
 			fields = { "abbr", "kind", "menu" },
 			format = require("lspkind").cmp_format({
@@ -68,10 +97,10 @@ function config.nvim_cmp()
 			["<C-u"] = cmp.mapping.scroll_docs(-4),
 			["<C-d"] = cmp.mapping.scroll_docs(4),
 			["<C-Space>"] = cmp.mapping.complete(),
-			["Up"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-			["Down"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+			["Up"] = cmp.mapping.select_prev_item(),
+			["Down"] = cmp.mapping.select_next_item(),
 			["<C-e>"] = cmp.mapping.abort(),
-			["<CR>"] = cmp.mapping.confirm({ select = true }),
+			["<CR>"] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
 			["<TAB>"] = cmp.mapping(function(fallback)
 				local ok, luasnip = pcall(require, "luasnip")
 				local luasnip_status = false
@@ -101,17 +130,17 @@ function config.nvim_cmp()
 		}),
 		snippet = {
 			expand = function(args)
-				require("luasnip").lsp_expand(args.body)
+				require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
 			end,
 		},
 		sources = {
 			-- Copilot Source
-			{ name = "copilot" },
+			{ name = "copilot", group_index = 2 },
 			-- Other Sources
-			{ name = "nvim_lsp" }, -- nvim-lspconfig
-			{ name = "luasnip" }, -- luasnip
-			{ name = "path" }, -- cmp-path
-			{ name = "buffer", keyword_length = 3 }, -- cmp-buffer
+			{ name = "nvim_lsp", group_index = 2 }, -- nvim-lspconfig
+			{ name = "luasnip", group_index = 2 }, -- luasnip
+			{ name = "path", group_index = 2 }, -- cmp-path
+			{ name = "buffer", group_index = 2, keyword_length = 3 }, -- cmp-buffer
 		},
 		window = {
 			completion = cmp.config.window.bordered(),
@@ -119,7 +148,7 @@ function config.nvim_cmp()
 		},
 	})
 	-- / 查找模式使用 buffer 源
-	cmp.setup.cmdline({ "/", "?" }, {
+	cmp.setup.cmdline("/", {
 		mapping = cmp.mapping.preset.cmdline(),
 		sources = {
 			{ name = "buffer" },
@@ -130,27 +159,6 @@ function config.nvim_cmp()
 		mapping = cmp.mapping.preset.cmdline(),
 		sources = cmp.config.sources({ { name = "path" } }, { { name = "cmdline" } }),
 	})
-end
-
-function config.lua_snip()
-	local ls = require("luasnip")
-	ls.config.set_config({
-		delete_check_events = "TextChanged,InsertEnter",
-	})
-	require("luasnip.loaders.from_vscode").lazy_load({
-		paths = { "./snippets/" },
-	})
-end
-
-function config.auto_pairs()
-	require("nvim-autopairs").setup({})
-	local ok, cmp = pcall(require, "cmp")
-	if not ok then
-		vim.cmd([[packadd nvim-cmp]])
-		cmp = require("cmp")
-	end
-	local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 end
 
 function config.formatter()
