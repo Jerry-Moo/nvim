@@ -1,4 +1,4 @@
-vim.opt_local.commentstring = '//%s'
+vim.opt_local.commentstring = "//%s"
 vim.opt_local.shiftwidth = 4 -- Number of spaces to use in auto(indent) (自动) 缩进使用的步进单位，以空白数目计
 vim.opt_local.softtabstop = 4 -- Automatically keeps in sync with shiftwidth 编辑时 <Tab> 使用的空格数
 vim.opt_local.smartindent = true -- Smart autoindenting on new lines C 程序只能自动缩进
