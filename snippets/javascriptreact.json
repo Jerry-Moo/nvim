@@ -154,7 +154,7 @@
     ],
     "description": "Stateless Function Component"
   },
-  
+
   "componentDidMount": {
     "prefix": "cdm",
     "body": ["componentDidMount() {", "\t$0", "}"],
