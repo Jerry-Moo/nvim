@@ -18,7 +18,7 @@ function config.lualine()
 				left = "",
 				right = "",
 			},
-			globalstatus = true,
+			globalstatus = false,
 		},
 		extensions = { "nvim-tree" },
 	})
