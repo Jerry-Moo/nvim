@@ -49,7 +49,7 @@ local function diag_config()
 	})
 
 	--disable diagnostic in neovim test file *_spec.lua
-	vim.nvim_create_autocmd("FileType", {
+	vim.api.nvim_create_autocmd("FileType", {
 		group = vim.api.nvim_create_augroup("DisableInSpec", { clear = true }),
 		pattern = "lua",
 		callback = function(opt)
