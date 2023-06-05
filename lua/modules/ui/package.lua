@@ -21,8 +21,8 @@ packadd({
 
 -- buffer
 packadd({
-	"akinsho/nvim-bufferline.lua",
-	config = conf.nvim_bufferline,
+	"akinsho/bufferline.nvim",
+	config = conf.bufferline,
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 })
 
@@ -39,7 +39,7 @@ packadd({
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 })
 
-packadd({
+packadd({ -- 显示缩进级别的插件
 	"lukas-reineke/indent-blankline.nvim",
 	event = "BufRead",
 	config = conf.indent_blankline,

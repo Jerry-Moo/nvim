@@ -20,14 +20,16 @@ function config.lualine()
 			},
 			globalstatus = false,
 		},
+		-- 扩展
 		extensions = { "nvim-tree" },
 	})
 end
 
-function config.nvim_bufferline()
+function config.bufferline()
 	require("bufferline").setup({
 		options = {
-			numbers = "ordinal",
+			mode = "tabs", -- tab 模式
+			numbers = "ordinal", -- 每个标签上都显示一个编号，以方便快速切换
 			modified_icon = "✥",
 			buffer_close_icon = "",
 			always_show_bufferline = false,
@@ -103,7 +105,7 @@ function config.nvim_tree()
 		},
 		view = {
 			-- 宽度
-			width = 30,
+			width = 35,
 			-- 左/右
 			side = "left",
 			-- 隐藏根目录
@@ -155,13 +157,13 @@ end
 
 function config.indent_blankline()
 	require("indent_blankline").setup({
-		char = "│",
+		char = "│", -- 用于显示缩进级别的字符
 		use_treesitter_scope = true,
 		show_first_indent_level = true,
-		show_current_context = false,
+		show_current_context = false, -- 是否显示当前上下文
 		show_current_context_start = false,
 		show_current_context_start_on_current_line = false,
-		filetype_exclude = {
+		filetype_exclude = { -- 需要排除的文件类型
 			"dashboard",
 			"log",
 			"fugitive",
@@ -177,7 +179,7 @@ function config.indent_blankline()
 			"TelescopePrompt",
 			"undotree",
 		},
-		buftype_exclude = { "terminal", "nofile", "prompt" },
+		buftype_exclude = { "terminal", "nofile", "prompt" }, -- 需要排除的缓冲区类型
 		context_patterns = {
 			"class",
 			"function",
