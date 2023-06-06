@@ -1,5 +1,23 @@
 local config = {}
 
+function config.flybuf()
+	require("flybuf").setup({})
+end
+
+function config.template_nvim()
+	require("template").setup({
+		temp_dir = "~/.config/nvim/template",
+		author = "JerryMoo",
+		email = "wuchujie123@gmail.com",
+	})
+	require("telescope").load_extension("find_template")
+end
+
+function config.colorizer()
+	require("colorizer").setup()
+	exec_filetype("ColorizerSetup")
+end
+
 function config.whichkey()
 	local wk = require("which-key")
 	wk.setup({
@@ -61,6 +79,13 @@ function config.flit()
 		-- Like `leap`s similar argument (call-specific overrides).
 		-- E.g.: opts = { equivalence_classes = {} }
 		opts = {},
+	})
+end
+
+function config.window_picker()
+	require("window-picker").setup({
+		selection_chars = "SDFJKLZXCV",
+		include_current_win = true,
 	})
 end
 

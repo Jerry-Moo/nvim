@@ -1,12 +1,26 @@
 local conf = require("modules.tools.config")
 
+packadd({
+	"nvimdev/flybuf.nvim",
+	cmd = "FlyBuf",
+	config = conf.flybuf,
+})
+
+packadd({
+	"nvimdev/coman.nvim",
+	event = "BufRead",
+})
+
+packadd({
+	"nvimdev/template.nvim",
+	cmd = "Template",
+	config = conf.template_nvim,
+})
+
 packadd({ -- css 着色器
 	"norcalli/nvim-colorizer.lua",
-	ft = { "lua", "css", "html", "sass", "less", "typescriptreact" },
-	config = function()
-		require("colorizer").setup()
-		exec_filetype("ColorizerSetup")
-	end,
+	ft = { "lua", "css", "html", "saflitss", "less", "typescriptreact", "conf" },
+	config = conf.colorizer,
 })
 
 packadd({
@@ -20,16 +34,18 @@ packadd({ -- 高亮搜索内容
 	config = conf.hlslens,
 })
 
-packadd({ "ggandor/leap.nvim", event = "BufRead", config = conf.leap })
-
-packadd({ "ggandor/flit.nvim", event = "BufRead", config = conf.flit })
+packadd({
+	"ggandor/leap.nvim",
+	event = "BufRead",
+	config = conf.leap,
+	dependencies = {
+		-- flit
+		{ "ggandor/flit.nvim", config = conf.flit },
+	},
+})
 
 packadd({
 	"s1n7ax/nvim-window-picker",
-	config = function()
-		require("window-picker").setup({
-			selection_chars = "SDFJKLZXCV",
-			include_current_win = true,
-		})
-	end,
+	event = "BufRead",
+	config = conf.window_picker,
 })
