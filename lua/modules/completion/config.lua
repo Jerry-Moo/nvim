@@ -94,8 +94,8 @@ function config.nvim_cmp()
 		},
 		-- You can set mappings if you want
 		mapping = cmp.mapping.preset.insert({
-			["<C-u"] = cmp.mapping.scroll_docs(-4),
-			["<C-d"] = cmp.mapping.scroll_docs(4),
+			["<C-u>"] = cmp.mapping.scroll_docs(-4),
+			["<C-d>"] = cmp.mapping.scroll_docs(4),
 			["<C-Space>"] = cmp.mapping.complete(),
 			["Up"] = cmp.mapping.select_prev_item(),
 			["Down"] = cmp.mapping.select_next_item(),
