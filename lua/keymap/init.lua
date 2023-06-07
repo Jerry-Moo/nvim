@@ -23,6 +23,9 @@ map.n({
 	["K"] = cmd("Lspsaga hover_doc"),
 	["gd"] = cmd("Lspsaga peek_definition"),
 	["gD"] = cmd("lua vim.lsp.buf.definition()"), -- 比 cmd('Lspsaga goto_definition') 好用
+	-- coman
+	["gcc"] = cmd("ComComment"),
+	["gcj"] = cmd("ComAnnotation"),
 })
 
 map.n("<Leader>E", function()
@@ -38,3 +41,8 @@ map.n("-", function()
 		vim.api.nvim_set_current_win(picked_window_id)
 	end
 end)
+
+map.x({
+	-- coman
+	["gcc"] = ":ComComment<CR>",
+})
