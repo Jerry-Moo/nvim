@@ -2,25 +2,25 @@ local M = {}
 local lspconfig = require("lspconfig")
 
 -- 根据官方的提示, 这里我们使用 on_attach 表示当前缓冲加载服务端完成之后调, 用用于在 Language Server Protocol (LSP) 客户端与语言服务器建立连接时进行一些自定义设置
-function M._attach(client, bufnr)
+function M._attach(client)
 	-- 设置 LSP 客户端的补全功能, 即 <C-x><C-o>
 	vim.opt.omnifunc = "v:lua.vim.lsp.omnifunc"
 	-- 禁用语义令牌功能
 	client.server_capabilities.semanticTokensProvider = nil
+	local original = vim.notify
+	local mynotify = function(msg, level, opts)
+		if msg == "No code actions available" or msg:find("overly") then
+			return
+		end
+		original(msg, level, opts)
+	end
+
+	vim.notify = mynotify
 end
 
 lspconfig.gopls.setup({
 	cmd = { "gopls", "serve" },
 	on_attach = function(client, _)
-		local orignal = vim.notify
-		local mynotify = function(msg, level, opts)
-			if msg == "No code actions available" then
-				return
-			end
-			orignal(msg, level, opts)
-		end
-
-		vim.notify = mynotify
 		M._attach(client)
 		-- vim.opt.omnifunc = "v:lua.vim.lsp.omnifunc"
 		-- if client.name == "gopls" and not client.server_capabilities.semanticTokensProvider then
@@ -78,7 +78,6 @@ lspconfig.clangd.setup({
 	cmd = {
 		"clangd",
 		"--background-index",
-		"--suggest-missing-includes",
 		"--clang-tidy",
 		"--header-insertion=iwyu",
 	},
