@@ -50,6 +50,16 @@ function config.lua_snip()
 	})
 end
 
+function config.lspkind()
+	local lspkind = require("lspkind")
+	lspkind.init({
+		symbol_map = {
+			Copilot = "",
+		},
+	})
+	vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
+end
+
 function config.auto_pairs()
 	local autopairs = require("nvim-autopairs")
 	autopairs.setup({
@@ -63,16 +73,6 @@ function config.auto_pairs()
 	end
 	local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 	cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-end
-
-function config.lspkind()
-	local lspkind = require("lspkind")
-	lspkind.init({
-		symbol_map = {
-			Copilot = "",
-		},
-	})
-	vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 end
 
 function config.nvim_cmp()

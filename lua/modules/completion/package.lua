@@ -48,6 +48,8 @@ local function diag_config()
 		},
 	})
 
+	vim.lsp.set_log_level("OFF")
+
 	--disable diagnostic in neovim test file *_spec.lua
 	vim.api.nvim_create_autocmd("FileType", {
 		group = vim.api.nvim_create_augroup("DisableInSpec", { clear = true }),
@@ -68,20 +70,20 @@ packadd({
 		diag_config()
 		require("modules.completion.backend")
 		require("modules.completion.frontend")
-		exec_filetype("lspconfig", "DisableInSpec")
+		exec_filetype({ "lspconfig", "DisableInSpec" })
 	end,
 })
 
 packadd({
 	"nvimdev/lspsaga.nvim",
-	event = "LspAttach",
+	ft = lsp_fts(),
 	cmd = "Lspsaga term_toggle",
 	config = conf.lspsaga,
 })
 
 packadd({
 	"williamboman/mason.nvim",
-	event = "VimEnter", -- event?
+	event = "VimEnter",
 	config = conf.mason,
 })
 
