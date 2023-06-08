@@ -4,29 +4,28 @@ local cmd = map.cmd
 map.n({
 	["j"] = "gj",
 	["k"] = "gk",
-	-- close buffer
-	["<C-x>k"] = cmd("bdelete"),
-	-- save
-	["<C-s>"] = cmd("write"),
-	-- buffer jump
-	["]b"] = cmd("bn"),
-	["[b"] = cmd("bp"),
-	-- force quit all
-	["<C-q>"] = cmd("qa!"),
-	-- remove trailing white space
-	["<Leader>t"] = cmd("TrimTrailingWhitespace"),
-	-- yank
-	["Y"] = "y$",
+	["<C-s>"] = cmd("write"), -- save
+	["<C-x>k"] = cmd("bdelete"), -- close buffer
+	["<C-n>"] = cmd("bn"), -- buffer jump
+	["<C-p>"] = cmd("bp"), -- buffer jump
+	["<C-q>"] = cmd("qa!"), -- force quit all
+	["<Leader>t"] = cmd("TrimTrailingWhitespace"), -- remove trailing white space
+	["Y"] = "y$", -- yank
 	-- switch window
 	["<C-h>"] = "<C-w>h",
 	["<C-l>"] = "<C-w>l",
 	["<C-j>"] = "<C-w>j",
 	["<C-k>"] = "<C-w>k",
-	-- resize window
+	-- Windows resize window
 	["<A-h>"] = cmd("vertical resize -5"),
 	["<A-l>"] = cmd("vertical resize +5"),
-	["<A-j>"] = cmd("resize +5"),
-	["<A-k>"] = cmd("resize -5"),
+	["<A-j>"] = cmd("resize -5"),
+	["<A-k>"] = cmd("resize +5"),
+	-- Mac resize window
+	["˙"] = cmd("vertical resize -5"),
+	["¬"] = cmd("vertical resize +5"),
+	["∆"] = cmd("resize -5"),
+	["˚"] = cmd("resize +5"),
 	-- window
 	["<Leader>1"] = "1gt",
 	["<Leader>2"] = "2gt",
@@ -38,29 +37,34 @@ map.n({
 	["<Leader>8"] = "8gt",
 	["<Leader>9"] = "9gt",
 	["<Leader>0"] = cmd("tablast"),
-	-- Mac
-	["˙"] = cmd("vertical resize -5"),
-	["¬"] = cmd("vertical resize +5"),
-	["∆"] = cmd("resize +5"),
-	["˚"] = cmd("resize -5"),
+	["<Leader>wn"] = cmd("tabnew"),
 })
-
 -- insertmode remap
 map.i({
-	["<C-w>"] = "<C-[>diwa",
-	["<C-h>"] = "<Bs>",
-	["<C-d>"] = "<Del>",
-	["<C-u>"] = "<C-G>u<C-u>",
+	["<C-d>"] = "<C-o>diw",
 	["<C-b>"] = "<Left>",
 	["<C-f>"] = "<Right>",
 	["<C-a>"] = "<Esc>^i",
-	["<C-j>"] = "<Esc>o",
-	["<C-k>"] = "<Esc>O",
+	["<C-l>"] = "<C-o>d$",
 	["<C-s>"] = "<ESC>:w<CR>",
+	["<C-n>"] = "<Down>",
+	["<C-p>"] = "<Up>",
+	--down/up
+	["<C-j>"] = "<C-o>o",
+	["<C-k>"] = "<C-o>O",
+	--@see https://github.com/neovim/neovim/issues/16416
+	["<C-C>"] = "<C-C>",
+	--@see https://vim.fandom.com/wiki/Moving_lines_up_or_down
+	-- Windows
+	["<A-j>"] = "<Esc>:m .+1<CR>==gi",
+	["<A-k>"] = "<Esc>:m .-2<CR>==gi",
+	-- Mac
+	["∆"] = "<Esc>:m .+1<CR>==gi",
+	["˚"] = "<Esc>:m .-2<CR>==gi",
 })
 
 map.i("<c-e>", function()
-	return vim.fn.pumvisible() == 1 and "<C-e>" or "<End>"
+	return vim.fn.pumvisible() == 1 and "<C-e>" or "<Esc>g_a"
 end, { expr = true })
 
 -- commandline remap
