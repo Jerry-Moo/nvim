@@ -12,6 +12,9 @@ map.n({
 	-- ui
 	-- nvimtree
 	["<Leader>e"] = cmd("NvimTreeToggle"),
+	-- gitsign
+	["]g"] = cmd('lua require"gitsigns".next_hunk()<CR>'),
+	["[g]"] = cmd('lua require"gitsigns".prev_hunk()<CR>'),
 
 	-- tools
 	-- flybuf.nvim
@@ -33,9 +36,6 @@ map.n({
 	["K"] = cmd("Lspsaga hover_doc"),
 	["gd"] = cmd("Lspsaga peek_definition"),
 	["gD"] = cmd("lua vim.lsp.buf.definition()"), -- 比 cmd('Lspsaga goto_definition') 好用
-	-- gitsign
-	["]g"] = cmd('lua require"gitsigns".next_hunk()<CR>'),
-	["[g]"] = cmd('lua require"gitsigns".prev_hunk()<CR>'),
 })
 
 map.n("<Leader>E", function()
