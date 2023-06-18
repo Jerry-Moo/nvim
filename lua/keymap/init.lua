@@ -8,8 +8,18 @@ map.n({
 	-- plugin manager: Lazy.nvim
 	["<Leader>pu"] = cmd("Lazy update"),
 	["<Leader>pi"] = cmd("Lazy install"),
+
+	-- ui
 	-- nvimtree
 	["<Leader>e"] = cmd("NvimTreeToggle"),
+
+	-- tools
+	-- flybuf.nvim
+	["<Leader>b"] = cmd("FlyBuf"),
+	-- coman
+	["gcc"] = cmd("ComComment"),
+	["gcj"] = cmd("ComAnnotation"),
+
 	-- Telescope
 	["<Leader>fb"] = cmd("Telescope buffers"),
 	["<Leader>fa"] = cmd("Telescope live_grep"),
@@ -23,9 +33,9 @@ map.n({
 	["K"] = cmd("Lspsaga hover_doc"),
 	["gd"] = cmd("Lspsaga peek_definition"),
 	["gD"] = cmd("lua vim.lsp.buf.definition()"), -- 比 cmd('Lspsaga goto_definition') 好用
-	-- coman
-	["gcc"] = cmd("ComComment"),
-	["gcj"] = cmd("ComAnnotation"),
+	-- gitsign
+	["]g"] = cmd('lua require"gitsigns".next_hunk()<CR>'),
+	["[g]"] = cmd('lua require"gitsigns".prev_hunk()<CR>'),
 })
 
 map.n("<Leader>E", function()
@@ -33,6 +43,19 @@ map.n("<Leader>E", function()
 	local esc_key = api.nvim_replace_termcodes("<Esc>", true, false, true)
 	api.nvim_feedkeys(esc_key, "n", false)
 end)
+
+-- template.nvim
+map.n("<Leader>T", function()
+	local tmp_name
+	if vim.bo.filetype == "lua" then
+		tmp_name = "nvim_temp"
+	end
+	if tmp_name then
+		vim.cmd("Template " .. tmp_name)
+		return
+	end
+	return ":Template"
+end, { expr = true })
 
 map.n("-", function()
 	local ok, pick_window = pcall(require, "window-picker")
