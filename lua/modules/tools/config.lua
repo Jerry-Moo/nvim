@@ -23,9 +23,61 @@ function config.whichkey()
 	wk.setup({
 		wk.register({
 			["<Leader>"] = {
+				["1"] = {
+					name = "+Select Window-1",
+				},
+				["2"] = {
+					name = "+Select Window-2",
+				},
+				["3"] = {
+					name = "+Select Window-3",
+				},
+				["4"] = {
+					name = "+Select Window-4",
+				},
+				["5"] = {
+					name = "+Select Window-5",
+				},
+				["6"] = {
+					name = "+Select Window-6",
+				},
+				["7"] = {
+					name = "+Select Window-7",
+				},
+				["8"] = {
+					name = "+Select Window-8",
+				},
+				["9"] = {
+					name = "+Select Window-9",
+				},
+				["0"] = {
+					name = "+Select Last Window",
+				},
+				b = {
+					name = "+FlyBuf",
+				},
+				e = {
+					name = "+Open NvimTree",
+				},
+				E = {
+					name = "+Open File Browser",
+				},
 				f = {
-					name = "+find",
+					name = "+Find",
+					a = { "Find Word" },
+					b = { "Find Buffer" },
 					f = { "Find File" },
+					w = { "Find Current Word" },
+				},
+				t = {
+					name = "TrimTrailingWhitespace",
+				},
+				T = {
+					name = "Template",
+				},
+				w = {
+					name = "+Window",
+					n = { "New Window" },
 				},
 			},
 		}),
