@@ -14,7 +14,7 @@ map.n({
 	["<Leader>e"] = cmd("NvimTreeToggle"),
 	-- gitsign
 	["]g"] = cmd('lua require"gitsigns".next_hunk()<CR>'),
-	["[g]"] = cmd('lua require"gitsigns".prev_hunk()<CR>'),
+	["[g"] = cmd('lua require"gitsigns".prev_hunk()<CR>'),
 
 	-- tools
 	-- flybuf.nvim
