@@ -9,6 +9,27 @@ map.n({
 	["<Leader>pu"] = cmd("Lazy update"),
 	["<Leader>pi"] = cmd("Lazy install"),
 
+	-- LSP
+	["<Leader>li"] = cmd("LspInfo"),
+	["<Leader>ll"] = cmd("LspLog"),
+	["<Leader>lr"] = cmd("LspRestart"),
+	-- mason
+	["<Leader>lp"] = cmd("Mason"),
+	-- Lspsaga
+	-- ["[e"] = cmd("Lspsaga diagnostic_jump_next"),
+	["[e"] = cmd("lua vim.diagnostic.goto_next()"),
+	-- ["]e"] = cmd("Lspsaga diagnostic_jump_prev"),
+	["]e"] = cmd("lua vim.diagnostic.goto_prev()"),
+	["K"] = cmd("Lspsaga hover_doc"),
+	["ga"] = cmd("Lspsaga code_action"),
+	["gd"] = cmd("Lspsaga peek_definition"),
+	["gp"] = cmd("lua vim.lsp.buf.definition()"), -- 比 cmd('Lspsaga goto_definition') 好用
+	["gr"] = cmd("Lspsaga rename"),
+	["gh"] = cmd("Lspsaga lsp_finder"),
+	["<Leader>o"] = cmd("Lspsaga outline"),
+	["<Leader>dw"] = cmd("Lspsaga show_workspace_diagnostics"),
+	["<Leader>db"] = cmd("Lspsaga show_buf_diagnostics"),
+
 	-- ui
 	-- nvimtree
 	["<Leader>e"] = cmd("NvimTreeToggle"),
@@ -28,14 +49,6 @@ map.n({
 	["<Leader>fa"] = cmd("Telescope live_grep"),
 	["<Leader>fw"] = cmd("Telescope grep_string"),
 	["<Leader>ff"] = cmd("Telescope find_files find_command=rg,--ignore,--hidden,--files"),
-	-- Lsp
-	["<Leader>li"] = cmd("LspInfo"),
-	["<Leader>ll"] = cmd("LspLog"),
-	["<Leader>lr"] = cmd("LspRestart"),
-	-- Lspsaga
-	["K"] = cmd("Lspsaga hover_doc"),
-	["gd"] = cmd("Lspsaga peek_definition"),
-	["gD"] = cmd("lua vim.lsp.buf.definition()"), -- 比 cmd('Lspsaga goto_definition') 好用
 })
 
 map.n("<Leader>E", function()

@@ -56,6 +56,11 @@ function config.whichkey()
 				b = {
 					"FlyBuf",
 				},
+				d = {
+					name = "Diagnostic",
+					b = { "Show Buffer Diagnostic" },
+					w = { "Show Workspace Diagnostic" },
+				},
 				e = {
 					"Open NvimTree",
 				},
@@ -68,6 +73,24 @@ function config.whichkey()
 					b = { "Find Buffer" },
 					f = { "Find File" },
 					w = { "Find Current Word" },
+				},
+				g = {
+					name = "Code",
+					a = { "Code Action" },
+					d = { "Peek Definition" },
+					h = { "Lsp Finder" },
+					p = { "Goto Definition" },
+					r = { "Rename" },
+				},
+				l = {
+					name = "LSP",
+					i = { "LspInfo" },
+					l = { "LspLog" },
+					r = { "LspRestart" },
+					p = { "Mason" },
+				},
+				o = {
+					"Lsp Outline",
 				},
 				p = {
 					name = "Plugin",
