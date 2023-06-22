@@ -30,6 +30,16 @@ map.n({
 	["<Leader>dw"] = cmd("Lspsaga show_workspace_diagnostics"),
 	["<Leader>db"] = cmd("Lspsaga show_buf_diagnostics"),
 
+	-- Editor
+	-- Telescope
+	["<Leader>fb"] = cmd("Telescope buffers"),
+	["<Leader>fa"] = cmd("Telescope live_grep"),
+	["<Leader>fw"] = cmd("Telescope grep_string"),
+	["<Leader>ff"] = cmd("Telescope find_files find_command=rg,--ignore,--hidden,--files"),
+	-- peek.nvim
+	["<Leader>po"] = cmd("PeekOpen"),
+	["<Leader>pc"] = cmd("PeekClose"),
+
 	-- ui
 	-- nvimtree
 	["<Leader>e"] = cmd("NvimTreeToggle"),
@@ -43,12 +53,6 @@ map.n({
 	-- coman
 	["gcc"] = cmd("ComComment"),
 	["gcj"] = cmd("ComAnnotation"),
-
-	-- Telescope
-	["<Leader>fb"] = cmd("Telescope buffers"),
-	["<Leader>fa"] = cmd("Telescope live_grep"),
-	["<Leader>fw"] = cmd("Telescope grep_string"),
-	["<Leader>ff"] = cmd("Telescope find_files find_command=rg,--ignore,--hidden,--files"),
 })
 
 map.n("<Leader>E", function()

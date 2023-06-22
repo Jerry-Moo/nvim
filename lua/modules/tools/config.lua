@@ -94,7 +94,9 @@ function config.whichkey()
 				},
 				p = {
 					name = "Plugin",
+					c = { "PeekClose" },
 					i = { "Lazy Install" },
+					o = { "PeekOpen" },
 					u = { "Lazy Update" },
 				},
 				t = {
