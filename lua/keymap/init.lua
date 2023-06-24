@@ -40,19 +40,19 @@ map.n({
 	["<Leader>po"] = cmd("PeekOpen"),
 	["<Leader>pc"] = cmd("PeekClose"),
 
+	-- Tools
+	-- flybuf.nvim
+	["<Leader>b"] = cmd("FlyBuf"),
+	-- coman
+	["gcc"] = cmd("ComComment"),
+	["gcj"] = cmd("ComAnnotation"),
+
 	-- ui
 	-- nvimtree
 	["<Leader>e"] = cmd("NvimTreeToggle"),
 	-- gitsign
 	["]g"] = cmd('lua require"gitsigns".next_hunk()<CR>'),
 	["[g"] = cmd('lua require"gitsigns".prev_hunk()<CR>'),
-
-	-- tools
-	-- flybuf.nvim
-	["<Leader>b"] = cmd("FlyBuf"),
-	-- coman
-	["gcc"] = cmd("ComComment"),
-	["gcj"] = cmd("ComAnnotation"),
 })
 
 map.n("<Leader>E", function()

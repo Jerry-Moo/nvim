@@ -54,7 +54,7 @@ function config.whichkey()
 					"Select Last Window",
 				},
 				b = {
-					"FlyBuf",
+					"Find Buffer",
 				},
 				d = {
 					name = "Diagnostic",
