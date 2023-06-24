@@ -26,7 +26,7 @@ map.n({
 	["¬"] = cmd("vertical resize +5"),
 	["∆"] = cmd("resize -5"),
 	["˚"] = cmd("resize +5"),
-	-- window
+	-- tab 标签页切换快捷键
 	["<Leader>1"] = "1gt",
 	["<Leader>2"] = "2gt",
 	["<Leader>3"] = "3gt",
@@ -37,6 +37,22 @@ map.n({
 	["<Leader>8"] = "8gt",
 	["<Leader>9"] = "9gt",
 	["<Leader>0"] = cmd("tablast"),
+	-- window
+	["<Leader><TAB>"] = "<C-O><CR>",
+	["<Leader>ws"] = cmd("sp"),
+	["<Leader>wv"] = cmd("vs"),
+	["<Leader>wh"] = "<C-w>h",
+	["<Leader>wj"] = "<C-w>j",
+	["<Leader>wk"] = "<C-w>k",
+	["<Leader>wl"] = "<C-w>l",
+	["<Leader>wH"] = "<C-w>H",
+	["<Leader>wJ"] = "<C-w>J",
+	["<Leader>wK"] = "<C-w>K",
+	["<Leader>wL"] = "<C-w>L",
+	["<Leader>wx"] = "<C-w>x",
+	["<Leader>wc"] = "<C-w>c",
+	["<Leader>wo"] = "<C-w>o",
+	["<Leader>wR"] = "<C-w>R",
 	["<Leader>wn"] = cmd("tabnew"),
 })
 -- insertmode remap
