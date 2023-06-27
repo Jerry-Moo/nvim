@@ -178,6 +178,9 @@ function config.formatter()
 					}
 				end,
 			},
+			python = {
+				require("formatter.filetypes.python").autopep8,
+			},
 			-- Use the special "*" filetype for defining formatter configurations on
 			-- any filetype
 			["*"] = {
