@@ -19,7 +19,7 @@ packadd({
 
 packadd({ -- css 着色器
 	"norcalli/nvim-colorizer.lua",
-	ft = { "lua", "css", "html", "saflitss", "less", "typescriptreact", "conf" },
+	ft = { "lua", "css", "html", "saflitss", "less", "typescriptreact", "conf", "vim" },
 	config = conf.colorizer,
 })
 

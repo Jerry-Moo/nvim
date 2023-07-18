@@ -3,7 +3,7 @@ local config = {}
 function config.lspsaga()
 	require("lspsaga").setup({
 		symbol_in_winbar = {
-			ignore_patterns = { "%w_spec" },
+			hide_keyword = true,
 		},
 	})
 end

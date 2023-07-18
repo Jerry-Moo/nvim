@@ -25,7 +25,7 @@ map.n({
 	["gd"] = cmd("Lspsaga peek_definition"),
 	["gp"] = cmd("lua vim.lsp.buf.definition()"), -- 比 cmd('Lspsaga goto_definition') 好用
 	["gr"] = cmd("Lspsaga rename"),
-	["gh"] = cmd("Lspsaga lsp_finder"),
+	["gh"] = cmd("Lspsaga finder"),
 	["<Leader>o"] = cmd("Lspsaga outline"),
 	["<Leader>dw"] = cmd("Lspsaga show_workspace_diagnostics"),
 	["<Leader>db"] = cmd("Lspsaga show_buf_diagnostics"),
