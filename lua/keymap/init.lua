@@ -23,7 +23,8 @@ map.n({
 	["K"] = cmd("Lspsaga hover_doc"),
 	["ga"] = cmd("Lspsaga code_action"),
 	["gd"] = cmd("Lspsaga peek_definition"),
-	["gp"] = cmd("lua vim.lsp.buf.definition()"), -- 比 cmd('Lspsaga goto_definition') 好用
+	-- ["gp"] = cmd("lua vim.lsp.buf.definition()"), -- 比 cmd('Lspsaga goto_definition') 好用
+	["gp"] = cmd("Lspsaga goto_definition"),
 	["gr"] = cmd("Lspsaga rename"),
 	["gh"] = cmd("Lspsaga finder"),
 	["<Leader>o"] = cmd("Lspsaga outline"),
