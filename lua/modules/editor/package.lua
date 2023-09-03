@@ -14,7 +14,7 @@ packadd({
 packadd({
 	"nvim-treesitter/nvim-treesitter",
 	event = "BufRead",
-	run = ":TSUpdate",
+	build = ":TSUpdate",
 	config = conf.nvim_treesitter,
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-textobjects",
