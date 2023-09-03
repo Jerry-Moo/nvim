@@ -33,7 +33,7 @@ local function diag_config()
 		"Info",
 		"Hint",
 	}
-	for type, icon in pairs(t) do
+	for _, type in pairs(t) do
 		local hl = "DiagnosticSign" .. type
 		vim.fn.sign_define(hl, { text = "⯈", texthl = hl, numhl = hl })
 	end
