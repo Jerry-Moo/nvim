@@ -10,6 +10,7 @@ end
 
 function config.mason()
 	require("mason").setup({
+		PATH = "prepend", -- "skip" seems to cause the spawning error
 		ui = {
 			-- Whether to automatically check for new versions when opening the :Mason window.
 			check_outdated_packages_on_open = true,
@@ -180,6 +181,9 @@ function config.formatter()
 			},
 			python = {
 				require("formatter.filetypes.python").autopep8,
+			},
+			javascript = {
+				require("formatter.filetypes.javascript").prettier,
 			},
 			-- Use the special "*" filetype for defining formatter configurations on
 			-- any filetype
