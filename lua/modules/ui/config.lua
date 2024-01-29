@@ -109,7 +109,7 @@ function config.nvim_tree()
 			-- 左/右
 			side = "left",
 			-- 隐藏根目录
-			hide_root_folder = false,
+			-- hide_root_folder = false,
 			-- 不显示行数
 			-- number = false,
 			relativenumber = true,
@@ -137,42 +137,22 @@ function config.gitsigns()
 end
 
 function config.indent_blankline()
-	require("indent_blankline").setup({
-		char = "│", -- 用于显示缩进级别的字符
-		use_treesitter_scope = true,
-		show_first_indent_level = true,
-		show_current_context = false, -- 是否显示当前上下文
-		show_current_context_start = false,
-		show_current_context_start_on_current_line = false,
-		filetype_exclude = { -- 需要排除的文件类型
-			"dashboard",
-			"log",
-			"fugitive",
-			"gitcommit",
-			"packer",
-			"markdown",
-			"json",
-			"txt",
-			"vista",
-			"help",
-			"todoist",
-			"git",
-			"TelescopePrompt",
-			"undotree",
+	require("ibl").setup({
+		indent = {
+			char = "│",
 		},
-		buftype_exclude = { "terminal", "nofile", "prompt" }, -- 需要排除的缓冲区类型
-		context_patterns = {
-			"class",
-			"function",
-			"method",
-			"block",
-			"list_literal",
-			"selector",
-			"^if",
-			"^table",
-			"if_statement",
-			"while",
-			"for",
+		scope = {
+			enabled = true,
+			show_start = true,
+			show_end = false,
+			exclude = {
+				language = {
+					"help",
+					"terminal",
+					"nofile",
+					"prompt",
+				},
+			},
 		},
 	})
 end
