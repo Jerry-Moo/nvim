@@ -44,9 +44,6 @@ map.n({
 	-- Tools
 	-- flybuf.nvim
 	["<Leader>b"] = cmd("FlyBuf"),
-	-- coman
-	["gcc"] = cmd("ComComment"),
-	["gcj"] = cmd("ComAnnotation"),
 
 	-- ui
 	-- nvimtree
@@ -84,6 +81,4 @@ map.n("-", function()
 end)
 
 map.x({
-	-- coman
-	["gcc"] = ":ComComment<CR>",
 })

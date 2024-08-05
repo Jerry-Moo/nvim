@@ -7,11 +7,6 @@ packadd({
 })
 
 packadd({
-	"nvimdev/coman.nvim",
-	event = "BufRead",
-})
-
-packadd({
 	"nvimdev/template.nvim",
 	cmd = "Template",
 	config = conf.template_nvim,

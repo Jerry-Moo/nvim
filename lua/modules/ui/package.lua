@@ -44,3 +44,16 @@ packadd({ -- 显示缩进级别的插件
 	event = "BufRead",
 	config = conf.indent_blankline,
 })
+
+packadd({ -- mini.icons
+	"echasnovski/mini.icons",
+	opts = {},
+	lazy = true,
+	dependencies = { "nvim-tree/nvim-web-devicons", enable = false, optional = true },
+	init = function()
+		package.preload["nvim-web-devicons"] = function()
+			require("mini.icons").mock_nvim_web_devicons()
+			return package.loaded["nvim-web-devicons"]
+		end
+	end,
+})
